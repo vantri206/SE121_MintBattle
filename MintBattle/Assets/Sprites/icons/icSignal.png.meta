@@ -1,0 +1,832 @@
+fileFormatVersion: 2
+guid: d067c60176dab9748a1667b06ff86283
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7851131425318196484
+    second: icSignal_0
+  - first:
+      213: -2996976301787494189
+    second: icSignal_1
+  - first:
+      213: -925571056757402127
+    second: icSignal_2
+  - first:
+      213: 412357470286637993
+    second: icSignal_3
+  - first:
+      213: 7503679125511807219
+    second: icSignal_4
+  - first:
+      213: -6814463170722283699
+    second: icSignal_5
+  - first:
+      213: 5789922121790736205
+    second: icSignal_6
+  - first:
+      213: 2309280889004343419
+    second: icSignal_7
+  - first:
+      213: 4747374125365377580
+    second: icSignal_8
+  - first:
+      213: -8000884412667813639
+    second: icSignal_9
+  - first:
+      213: 4683850598219100134
+    second: icSignal_10
+  - first:
+      213: -7412656549801430549
+    second: icSignal_11
+  - first:
+      213: -4279981880855869346
+    second: icSignal_12
+  - first:
+      213: 894041754869006181
+    second: icSignal_13
+  - first:
+      213: 708207792621072747
+    second: icSignal_14
+  - first:
+      213: -5618872926919074032
+    second: icSignal_15
+  - first:
+      213: -6112522986570334510
+    second: icSignal_16
+  - first:
+      213: -2792228002390106299
+    second: icSignal_17
+  - first:
+      213: 6521485219860746919
+    second: icSignal_18
+  - first:
+      213: 577684955186775415
+    second: icSignal_19
+  - first:
+      213: -8884279379854631497
+    second: icSignal_20
+  - first:
+      213: 2316710714665842470
+    second: icSignal_21
+  - first:
+      213: -9024815852255113806
+    second: icSignal_22
+  - first:
+      213: 5838552337983531126
+    second: icSignal_23
+  - first:
+      213: 1048000757203781137
+    second: icSignal_24
+  - first:
+      213: -6364615497918214976
+    second: icSignal_25
+  - first:
+      213: -258834784347118851
+    second: icSignal_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: icSignal_0
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 473
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4055ffa2f62d4fc60800000000000000
+      internalID: 7851131425318196484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_1
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 453
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d841b3aee99866d0800000000000000
+      internalID: -2996976301787494189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_2
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 450
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f5979b1706b723f0800000000000000
+      internalID: -925571056757402127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_3
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 38
+        width: 136
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9abe9e83fecf8b500800000000000000
+      internalID: 412357470286637993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_4
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 83
+        width: 99
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f025a0986c622860800000000000000
+      internalID: 7503679125511807219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_5
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 423
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4fbd1ec9d92e61a0800000000000000
+      internalID: -6814463170722283699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_6
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 419
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4743825e7fe95050800000000000000
+      internalID: 5789922121790736205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_7
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 356
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b70c3b3cbb63c0020800000000000000
+      internalID: 2309280889004343419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_8
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 396
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2ab8464d9f02e140800000000000000
+      internalID: 4747374125365377580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_9
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 397
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f0a9f5640627f090800000000000000
+      internalID: -8000884412667813639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_10
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 393
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6efa9df8d41600140800000000000000
+      internalID: 4683850598219100134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_11
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 324
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be1fc135424f02990800000000000000
+      internalID: -7412656549801430549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 332
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e584a7ad7237a94c0800000000000000
+      internalID: -4279981880855869346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_13
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 314
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56f755d3d36486c00800000000000000
+      internalID: 894041754869006181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 183
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b61b7523c3f04d900800000000000000
+      internalID: 708207792621072747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_15
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 175
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01fdde0d7d0c502b0800000000000000
+      internalID: -5618872926919074032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_16
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 172
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2deb010bab4fb2ba0800000000000000
+      internalID: -6112522986570334510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_17
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 168
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54f93a9fc630049d0800000000000000
+      internalID: -2792228002390106299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_18
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 98
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a292c15148f08a50800000000000000
+      internalID: 6521485219860746919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_19
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 103
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 775cef1f769540800800000000000000
+      internalID: 577684955186775415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_20
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 98
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bddf6699f2b4b480800000000000000
+      internalID: -8884279379854631497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_21
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 101
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 627bffade1c962020800000000000000
+      internalID: 2316710714665842470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_22
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 69
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bd05034cc961c280800000000000000
+      internalID: -9024815852255113806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_23
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 78
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 678e80cda64b60150800000000000000
+      internalID: 5838552337983531126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_24
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 44
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 116c879d22f3b8e00800000000000000
+      internalID: 1048000757203781137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_25
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 30
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc83a20de75ca7a0800000000000000
+      internalID: -6364615497918214976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icSignal_26
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 19
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df2a97f822f686cf0800000000000000
+      internalID: -258834784347118851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      icSignal_0: 7851131425318196484
+      icSignal_1: -2996976301787494189
+      icSignal_10: 4683850598219100134
+      icSignal_11: -7412656549801430549
+      icSignal_12: -4279981880855869346
+      icSignal_13: 894041754869006181
+      icSignal_14: 708207792621072747
+      icSignal_15: -5618872926919074032
+      icSignal_16: -6112522986570334510
+      icSignal_17: -2792228002390106299
+      icSignal_18: 6521485219860746919
+      icSignal_19: 577684955186775415
+      icSignal_2: -925571056757402127
+      icSignal_20: -8884279379854631497
+      icSignal_21: 2316710714665842470
+      icSignal_22: -9024815852255113806
+      icSignal_23: 5838552337983531126
+      icSignal_24: 1048000757203781137
+      icSignal_25: -6364615497918214976
+      icSignal_26: -258834784347118851
+      icSignal_3: 412357470286637993
+      icSignal_4: 7503679125511807219
+      icSignal_5: -6814463170722283699
+      icSignal_6: 5789922121790736205
+      icSignal_7: 2309280889004343419
+      icSignal_8: 4747374125365377580
+      icSignal_9: -8000884412667813639
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

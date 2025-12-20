@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838b0e1afa57c2a41bca9979f143d3bf, type: 3}
+  m_Name: HR04
+  m_EditorClassIdentifier: 
+  Id: HR04
+  Name: Paladin
+  BaseHP: 560
+  BaseAttack: 40
+  BaseDefense: 50
+  BaseSpeed: 15
+  growthStats: 14
+  powerScale: 0
+  Skills:
+  - SK04
+  - SK05
+  Image: {fileID: -2334120886005512897, guid: 92dfa6e0e7df42a4296018496a333594, type: 3}
+  Avatar: {fileID: 2833711274697811677, guid: 2418f889f8e607646a59c2c36f863005, type: 3}
+  animator: {fileID: 9100000, guid: c86b5b6aa9791fb459ca41ea69647a56, type: 2}

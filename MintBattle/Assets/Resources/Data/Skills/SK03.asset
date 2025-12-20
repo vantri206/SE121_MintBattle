@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dec6f4424729149b53a71a93bd03a3, type: 3}
+  m_Name: SK03
+  m_EditorClassIdentifier: 
+  Id: SK03
+  Name: Heavy Attack
+  Description: Use sword to attack a enemy with high power, deal 200% ATK damage
+  Image: {fileID: -2139777355, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
+  Cooldown: 1
+  TargetType: 0
+  AttackMultiplier: 2
+  vfxPrefab: {fileID: 5448198474345254413, guid: 4d3367f230fd11140bf7a4617b46ab38, type: 3}
+  castDelay: 0.8
+  isSkillAttack: 1
+  isSkillHeal: 0

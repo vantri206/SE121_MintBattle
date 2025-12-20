@@ -1,0 +1,21 @@
+{
+  "heroClassId": "HR03",
+  "name": "Magician",
+  "baseHP": 130,
+  "baseAttack": 50,
+  "baseDefense": 45,
+  "baseSpeed": 20,
+  "growthStats": 13,
+  "skills": [
+  {
+    "name": "Fire Ball",
+    "description": "Attack single enemy with a fireball, deal 200% ATK damage",
+    "cooldown": 1
+  },
+  {
+    "name": "Thunder",
+    "description": "Attack single enemy with thunder, deal 200% ATK damage",
+    "cooldown": 1
+  }
+]
+}

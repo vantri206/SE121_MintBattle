@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838b0e1afa57c2a41bca9979f143d3bf, type: 3}
+  m_Name: HR02
+  m_EditorClassIdentifier: 
+  Id: HR02
+  Name: Warrior
+  BaseHP: 600
+  BaseAttack: 40
+  BaseDefense: 40
+  BaseSpeed: 15
+  growthStats: 12
+  powerScale: 0
+  Skills:
+  - SK03
+  - SK04
+  Image: {fileID: -3025339715054530023, guid: b3063d929cc22ca4e97a2d922a600967, type: 3}
+  Avatar: {fileID: 2833711274697811677, guid: 1ae2942b9449de84991d80178ebe16bf, type: 3}
+  animator: {fileID: 9100000, guid: 662ff6c7532e88840b060cfa9591a876, type: 2}

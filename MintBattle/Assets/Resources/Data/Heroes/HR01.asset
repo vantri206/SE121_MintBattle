@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838b0e1afa57c2a41bca9979f143d3bf, type: 3}
+  m_Name: HR01
+  m_EditorClassIdentifier: 
+  Id: HR01
+  Name: Wizard
+  BaseHP: 500
+  BaseAttack: 30
+  BaseDefense: 25
+  BaseSpeed: 20
+  growthStats: 10
+  powerScale: 0
+  Skills:
+  - SK01
+  - SK02
+  Image: {fileID: 1457491203435894738, guid: 348a25446622588478fe5bc971a57691, type: 3}
+  Avatar: {fileID: -4862304518822728533, guid: 462240ab151c9f04681839866fb1c4bd, type: 3}
+  animator: {fileID: 9100000, guid: c86b5b6aa9791fb459ca41ea69647a56, type: 2}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dec6f4424729149b53a71a93bd03a3, type: 3}
+  m_Name: SK05
+  m_EditorClassIdentifier: 
+  Id: SK05
+  Name: Healing Magic
+  Description: Recovery your health equal 150% ATK
+  Image: {fileID: 187683636, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
+  Cooldown: 2
+  TargetType: 2
+  AttackMultiplier: 1.5
+  VfxPrefab: {fileID: 0}
+  isSkillAttack: 0
+  isSkillHeal: 1

@@ -1,0 +1,676 @@
+fileFormatVersion: 2
+guid: 1bbd0d239a9de3d4c94d56d6f3bea9b1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2135929782151513986
+    second: icMedal_0
+  - first:
+      213: 3761526739570545731
+    second: icMedal_1
+  - first:
+      213: -2550856136702558603
+    second: icMedal_2
+  - first:
+      213: -4268714244027087162
+    second: icMedal_3
+  - first:
+      213: 1198395306822502304
+    second: icMedal_4
+  - first:
+      213: -3656551645083429531
+    second: icMedal_5
+  - first:
+      213: 359564286337043850
+    second: icMedal_6
+  - first:
+      213: -8794193935601292311
+    second: icMedal_7
+  - first:
+      213: -2484384791809723643
+    second: icMedal_8
+  - first:
+      213: 1350369264775392283
+    second: icMedal_9
+  - first:
+      213: 4589805159526442951
+    second: icMedal_10
+  - first:
+      213: -669815055661292291
+    second: icMedal_11
+  - first:
+      213: 5621670847233423278
+    second: icMedal_12
+  - first:
+      213: 3869713789367389403
+    second: icMedal_13
+  - first:
+      213: -46935763212299030
+    second: icMedal_14
+  - first:
+      213: 5035829329560154225
+    second: icMedal_15
+  - first:
+      213: -6178734876761584811
+    second: icMedal_16
+  - first:
+      213: 3663301168982682869
+    second: icMedal_17
+  - first:
+      213: 3784779414435848935
+    second: icMedal_18
+  - first:
+      213: -7891460167798351080
+    second: icMedal_19
+  - first:
+      213: 8681400755575063916
+    second: icMedal_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: icMedal_0
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 470
+        width: 48
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e787ea50e27ab52e0800000000000000
+      internalID: -2135929782151513986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_1
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 462
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3445c35e3a0a33430800000000000000
+      internalID: 3761526739570545731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_2
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 461
+        width: 40
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57ef7b2dbd9899cd0800000000000000
+      internalID: -2550856136702558603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_3
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 462
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c68d1df20b72c4c0800000000000000
+      internalID: -4268714244027087162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_4
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 470
+        width: 49
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a786a3ae2e81a010800000000000000
+      internalID: 1198395306822502304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_5
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 445
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5659eebe6a1514dc0800000000000000
+      internalID: -3656551645083429531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_6
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 460
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8d490930dd6df400800000000000000
+      internalID: 359564286337043850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_7
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 456
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eb279e853fb4f580800000000000000
+      internalID: -8794193935601292311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_8
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 457
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5037cc6d131b58dd0800000000000000
+      internalID: -2484384791809723643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_9
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 457
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1cea8611b97db210800000000000000
+      internalID: 1350369264775392283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_10
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 456
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c724d9897342bf30800000000000000
+      internalID: 4589805159526442951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_11
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 460
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df4a91671c654b6f0800000000000000
+      internalID: -669815055661292291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_12
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 445
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea77485c9df240e40800000000000000
+      internalID: 5621670847233423278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_13
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 219
+        width: 230
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdc8ca5503cf3b530800000000000000
+      internalID: 3869713789367389403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_14
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 361
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae4187a0c20495ff0800000000000000
+      internalID: -46935763212299030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_15
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 361
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1703de1281cd2e540800000000000000
+      internalID: 5035829329560154225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_16
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 337
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55b0f4dad59b04aa0800000000000000
+      internalID: -6178734876761584811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_17
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 337
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fc6c721109a6d230800000000000000
+      internalID: 3663301168982682869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_18
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 43
+        width: 219
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e2e8a623dc368430800000000000000
+      internalID: 3784779414435848935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_19
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 21
+        width: 34
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81b1c33c9c6eb7290800000000000000
+      internalID: -7891460167798351080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icMedal_20
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 21
+        width: 34
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c650cdcbdf78a7870800000000000000
+      internalID: 8681400755575063916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      icMedal_0: -2135929782151513986
+      icMedal_1: 3761526739570545731
+      icMedal_10: 4589805159526442951
+      icMedal_11: -669815055661292291
+      icMedal_12: 5621670847233423278
+      icMedal_13: 3869713789367389403
+      icMedal_14: -46935763212299030
+      icMedal_15: 5035829329560154225
+      icMedal_16: -6178734876761584811
+      icMedal_17: 3663301168982682869
+      icMedal_18: 3784779414435848935
+      icMedal_19: -7891460167798351080
+      icMedal_2: -2550856136702558603
+      icMedal_20: 8681400755575063916
+      icMedal_3: -4268714244027087162
+      icMedal_4: 1198395306822502304
+      icMedal_5: -3656551645083429531
+      icMedal_6: 359564286337043850
+      icMedal_7: -8794193935601292311
+      icMedal_8: -2484384791809723643
+      icMedal_9: 1350369264775392283
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
