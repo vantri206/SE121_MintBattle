@@ -331,7 +331,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: -1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 2107722199
-  m_SortingOrder: 200
+  m_SortingOrder: 2100
   m_TargetDisplay: 0
 --- !u!114 &4706773017552200695
 MonoBehaviour:
@@ -365,6 +365,7 @@ MonoBehaviour:
   index: 0
   heroAvatar: {fileID: 5681363902938250042}
   heroLevel: {fileID: 8869607372412311572}
+  heroId: {fileID: 3446620504888822295}
   button: {fileID: 4378292722618056499}
 --- !u!1 &5681363902938250042
 GameObject:
@@ -456,7 +457,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2107722199
   m_SortingLayer: 2
-  m_SortingOrder: 500
+  m_SortingOrder: 2500
   m_Sprite: {fileID: -9215036744415066934, guid: b6b5f76fce69f1048964edd89d9eee4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

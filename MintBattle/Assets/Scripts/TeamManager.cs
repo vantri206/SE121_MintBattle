@@ -98,7 +98,6 @@ public class TeamManager : MonoBehaviour
 
         return new string[slotsPerTeam];
     }
-
     private void SaveData()
     {
         foreach (var team in teams)
@@ -110,7 +109,6 @@ public class TeamManager : MonoBehaviour
         }
         PlayerPrefs.Save();
     }
-
     private void LoadData()
     {
         teams.Clear();

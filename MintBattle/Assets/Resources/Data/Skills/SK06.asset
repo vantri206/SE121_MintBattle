@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: SK06
   m_EditorClassIdentifier: 
   Id: SK06
-  Name: Thunder
-  Description: Attack single enemy with thunder, deal 200% ATK damage
-  Image: {fileID: 218760387, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
-  Cooldown: 1
-  TargetType: 0
+  Name: Healing Potion
+  Description: Heal a ally with health amount equal 100% Attack
+  Image: {fileID: 187683636, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
+  Cooldown: 2
+  TargetType: 2
   AttackMultiplier: 2
-  VfxPrefab: {fileID: 0}
+  vfxPrefab: {fileID: 0}
+  castDelay: 1.2
+  isSkillAttack: 0
+  isSkillHeal: 1

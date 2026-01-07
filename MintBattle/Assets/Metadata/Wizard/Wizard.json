@@ -1,0 +1,20 @@
+{
+  "heroName": "Wizard",
+  "baseHP": 500,
+  "baseAttack": 30,
+  "baseDefense": 25,
+  "baseSpeed": 20,
+  "growthStats": 10,
+  "skills": [
+  {
+    "name": "Fire Ball",
+    "description": "Attack single enemy, deal 200% ATK damage",
+    "cooldown": 1
+  },
+  {
+    "name": "Fire Rain",
+    "description": "Attack all enemies, deal 150% ATK damage",
+    "cooldown": 2
+  }
+]
+}

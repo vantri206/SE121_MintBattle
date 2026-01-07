@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: SK05
   m_EditorClassIdentifier: 
   Id: SK05
-  Name: Healing Magic
-  Description: Recovery your health equal 150% ATK
-  Image: {fileID: 187683636, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
-  Cooldown: 2
-  TargetType: 2
-  AttackMultiplier: 1.5
-  VfxPrefab: {fileID: 0}
-  isSkillAttack: 0
-  isSkillHeal: 1
+  Name: Thunder
+  Description: Attack single enemy, deal 200% ATK damage
+  Image: {fileID: 218760387, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
+  type: 0
+  Cooldown: 1
+  TargetType: 0
+  AttackMultiplier: 2
+  vfxPrefab: {fileID: 5448198474345254413, guid: e3d8d9596bc571b4a973f3dc8b5ab480, type: 3}
+  castDelay: 1.2
+  isSkillAttack: 1
+  isSkillHeal: 0
+  passiveTarget: 0
+  passiveValue: 0

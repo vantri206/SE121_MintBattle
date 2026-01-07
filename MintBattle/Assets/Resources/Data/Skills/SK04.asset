@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: SK04
   Name: Magic Sword
-  Description: Attack a enemy with magic sword, deal 250% ATK damage
+  Description: Attack a enemy, deal 250% ATK damage
   Image: {fileID: -523997713, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
   Cooldown: 2
   TargetType: 0
   AttackMultiplier: 2.5
   vfxPrefab: {fileID: 5448198474345254413, guid: 4d3367f230fd11140bf7a4617b46ab38, type: 3}
-  castDelay: 0.8
+  castDelay: 0.5
   isSkillAttack: 1
   isSkillHeal: 0

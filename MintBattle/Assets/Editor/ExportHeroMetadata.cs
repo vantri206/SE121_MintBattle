@@ -39,6 +39,8 @@ public class ExportHeroMetadata : EditorWindow
             string imagePath = Path.Combine(folder, imageFile);
             SaveSpriteToPNG(hero.Image, imagePath);
 
+            ApplyPixelArtSettings(imagePath);
+
             string jsonFile = hero.Id + ".json";
             string jsonPath = Path.Combine(folder, jsonFile);
 
@@ -79,7 +81,26 @@ public class ExportHeroMetadata : EditorWindow
 
         File.WriteAllBytes(path, tex.EncodeToPNG());
     }
+    public static void ApplyPixelArtSettings(string path)
+    {
+        AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
 
+        TextureImporter importer = AssetImporter.GetAtPath(path) as TextureImporter;
+        if (importer != null)
+        {
+            importer.textureType = TextureImporterType.Default;
+            importer.filterMode = FilterMode.Point;
+            importer.textureCompression = TextureImporterCompression.Uncompressed;
+            importer.mipmapEnabled = false;
+            importer.alphaIsTransparency = true;
+
+            TextureImporterSettings settings = new TextureImporterSettings();
+            importer.ReadTextureSettings(settings);
+            importer.SetTextureSettings(settings);
+
+            importer.SaveAndReimport();
+        }
+    }
     private static string GenerateHeroJson(HeroData hero, string heroImageFile, Dictionary<string, SkillData> allSkills, string folder)
     {
         string skillsArray = "[\n";
@@ -105,8 +126,7 @@ public class ExportHeroMetadata : EditorWindow
         }
         skillsArray += "]";
         return "{\n" +
-               $"  \"heroClassId\": \"{hero.Id}\",\n" +
-               $"  \"name\": \"{hero.Name}\",\n" +
+               $"  \"heroName\": \"{hero.Id}\",\n" +
                $"  \"baseHP\": {hero.BaseHP},\n" +
                $"  \"baseAttack\": {hero.BaseAttack},\n" +
                $"  \"baseDefense\": {hero.BaseDefense},\n" +

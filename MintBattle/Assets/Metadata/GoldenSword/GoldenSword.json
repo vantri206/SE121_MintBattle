@@ -1,0 +1,10 @@
+{
+  "name": "GoldenSword",
+  "image": "GoldenSword.png",
+  "attributes": [
+    {
+      "trait_type": "Attack Bonus",
+      "value": 100
+    }
+  ]
+}

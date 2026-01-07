@@ -7,6 +7,8 @@ public class SkillDatabase : MonoBehaviour
 
     private Dictionary<string, SkillData> skillMap;
 
+    public string[] nftPassiveIdMapping;
+
     private void Awake()
     {
         if (Instance != null)
@@ -24,12 +26,19 @@ public class SkillDatabase : MonoBehaviour
     {
         skillMap = new Dictionary<string, SkillData>();
 
-
         SkillData[] allSkills = Resources.LoadAll<SkillData>("Data/Skills");
         foreach (var skill in allSkills)
         {
-            skillMap.Add(skill.Id, skill);
+            if (skill != null && !skillMap.ContainsKey(skill.Id))
+            {
+                skillMap.Add(skill.Id, skill);
+            }
+            else
+            {
+                Debug.LogWarning($"Duplicate or Null Skill ID: {skill.name}");
+            }
         }
+        Debug.Log($"Loaded {skillMap.Count} skills.");
     }
 
     public SkillData GetSkillById(string id)
@@ -37,5 +46,16 @@ public class SkillDatabase : MonoBehaviour
         if (skillMap.TryGetValue(id, out SkillData skill))
             return skill;
         return null;
+    }
+
+    public SkillData GetSkillFromNftId(int nftId)
+    {
+        if (nftId > 0 && nftId < nftPassiveIdMapping.Length)
+        {
+            string stringId = nftPassiveIdMapping[nftId];
+            return GetSkillById(stringId);
+        }
+
+        return null; 
     }
 }

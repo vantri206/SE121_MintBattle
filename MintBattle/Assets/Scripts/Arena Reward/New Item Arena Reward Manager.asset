@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4277802c12ec2e64ca3b482d68add063, type: 3}
+  m_Name: New Item Arena Reward Manager
+  m_EditorClassIdentifier: 
+  items:
+  - itemData: {fileID: 11400000, guid: 664103e6d4dc8034c83fb6809dec4704, type: 2}
+    tokenId: 1
+    dropChance: 30
+  - itemData: {fileID: 11400000, guid: c4a6620d12bd5de4ba2d1ef370372c4d, type: 2}
+    tokenId: 2
+    dropChance: 60
+  - itemData: {fileID: 11400000, guid: 7810efb53369b194682b566c73e6be3e, type: 2}
+    tokenId: 3
+    dropChance: 10

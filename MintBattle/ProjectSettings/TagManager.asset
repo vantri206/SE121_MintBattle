@@ -48,6 +48,15 @@ TagManager:
   - name: UI
     uniqueID: 2107722199
     locked: 0
+  - name: HeroBattle
+    uniqueID: 3474991263
+    locked: 0
+  - name: EffectBattle
+    uniqueID: 305431867
+    locked: 0
+  - name: PopupBattle
+    uniqueID: 3565774309
+    locked: 0
   m_RenderingLayers:
   - Default
   - Background

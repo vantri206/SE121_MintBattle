@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class BattleHUD : MonoBehaviour
 {
     [Header("--- HERO INFO ---")]
+    [SerializeField] private GameObject heroInfo;
     [SerializeField] private Image heroFaceImg;       
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private Slider hpSlider;          
@@ -19,20 +20,28 @@ public class BattleHUD : MonoBehaviour
     [SerializeField] private Transform turnOrderContainer; 
     [SerializeField] private GameObject turnIconPrefab;
 
+    [Header("--- TOP BAR NAME TEXT  ---")]
+    public TextMeshProUGUI leftPlayerNameText;  
+    public TextMeshProUGUI rightPlayerNameText;
+    public GameObject leftArrow;
+    public GameObject rightArrow;
+
+
     private List<SkillButtonUI> skillButtons = new List<SkillButtonUI>();
 
     public void UpdateHeroStatus(BattleUnit unit)
     {
+        heroInfo.SetActive(true);
+
         nameText.text = unit.unitName;
 
-        if (unit.sourceHero.ClassData.Image != null)
+        if (unit.SourceHero.ClassData.Image != null)
         {
-            heroFaceImg.sprite = unit.sourceHero.ClassData.Avatar;
+            heroFaceImg.sprite = unit.SourceHero.ClassData.Avatar;
         }
 
-        UpdateHP(unit.currentHP, unit.maxHP);
+        UpdateHP(unit.CurrentHP, unit.MaxHP);
     }
-
     public void UpdateHP(int current, int max)
     {
         if (hpSlider != null)
@@ -85,20 +94,20 @@ public class BattleHUD : MonoBehaviour
             GameObject iconObj = Instantiate(turnIconPrefab, turnOrderContainer);
             Image img = iconObj.GetComponent<Image>();
 
-            if (unit.sourceHero.ClassData.Image != null)
-                img.sprite = unit.sourceHero.ClassData.Avatar;
+            if (unit.SourceHero.ClassData.Image != null)
+                img.sprite = unit.SourceHero.ClassData.Avatar;
 
             Transform overlay = iconObj.transform.Find("Overlay");
             Transform deadIcon = iconObj.transform.Find("DeadIcon");
             Transform turnArrow = iconObj.transform.Find("TurnArrow");
             Transform border = iconObj.transform.Find("Border");
 
-            if (unit.ownerId == PlayerProfile.Instance.WalletAddress)
+            if (unit.OwnerId == PlayerProfile.Instance.WalletAddress)
                 border.GetComponent<Image>().color = Color.green;
             else
                 border.GetComponent<Image>().color = Color.red;
 
-            if (unit.currentHP <= 0)
+            if (unit.CurrentHP <= 0)
             {
                 if (overlay) overlay.gameObject.SetActive(true);
                 if (deadIcon) deadIcon.gameObject.SetActive(true);
@@ -121,5 +130,21 @@ public class BattleHUD : MonoBehaviour
                 iconObj.transform.localScale = Vector3.one * 0.75f;
             }
         }
+    }
+    public void UpdatePlayerName(bool isMySide, string name)
+    {
+        if (isMySide)
+        {
+            if (leftPlayerNameText != null) leftPlayerNameText.text = name;
+        }
+        else
+        {
+            if (rightPlayerNameText != null) rightPlayerNameText.text = name;
+        }
+    }
+    public void UpdateTurnIndicator(bool isMyTurn)
+    {
+        if (leftArrow != null) leftArrow.SetActive(isMyTurn);
+        if (rightArrow != null) rightArrow.SetActive(!isMyTurn);
     }
 }

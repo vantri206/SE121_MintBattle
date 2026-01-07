@@ -19,19 +19,23 @@ public class TeamSlotUI : MonoBehaviour
         this.myTeamIdx = teamIdx;
         this.mySlotIdx = slotIdx;
         this.onClickCallback = onClick;
+
         foreach (Transform child in container)
         {
             Destroy(child.gameObject);
         }
 
+        Hero heroData = null;
         if (!string.IsNullOrEmpty(currentHeroId))
         {
+            heroData = PlayerInventory.Instance.GetHeroById(currentHeroId);
+        }
+        if (heroData != null)
+        {
             GameObject cardObj = Instantiate(heroCardPrefab, container);
-
             HeroCardUI cardUI = cardObj.GetComponent<HeroCardUI>();
-            Hero heroData = PlayerInventory.Instance.GetHeroById(currentHeroId); 
 
-            if (cardUI != null && heroData != null)
+            if (cardUI != null)
             {
                 cardUI.LoadHero(heroData, 0);
                 cardUI.SetClickAction(() =>
@@ -39,20 +43,20 @@ public class TeamSlotUI : MonoBehaviour
                     onClickCallback?.Invoke(myTeamIdx, mySlotIdx);
                 });
             }
-            else
-            {
-                //Debug.Log(currentHeroId);
-            }
         }
         else
         {
             GameObject emptyObj = Instantiate(emptyStatePrefab, container);
-
             Button btn = emptyObj.GetComponentInChildren<Button>();
             if (btn != null)
             {
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(() => onClickCallback?.Invoke(myTeamIdx, mySlotIdx));
+            }
+
+            if (!string.IsNullOrEmpty(currentHeroId))
+            {
+                Debug.LogWarning($"Slot {slotIdx} has ID {currentHeroId}. Show Empty Slot.");
             }
         }
     }

@@ -1,0 +1,1898 @@
+fileFormatVersion: 2
+guid: 5459ba96e8ed45245a664f63e09723a4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1074611818290464194
+    second: circle 2_0
+  - first:
+      213: 4486596587028336915
+    second: circle 2_1
+  - first:
+      213: 3851334793804019355
+    second: circle 2_2
+  - first:
+      213: -8375988221499499644
+    second: circle 2_3
+  - first:
+      213: 646434667536250353
+    second: circle 2_4
+  - first:
+      213: -1099869199873622393
+    second: circle 2_5
+  - first:
+      213: 7502891543289180040
+    second: circle 2_6
+  - first:
+      213: 605372047982623814
+    second: circle 2_7
+  - first:
+      213: -4921774152619736066
+    second: circle 2_8
+  - first:
+      213: -4552908630713985460
+    second: circle 2_9
+  - first:
+      213: -1213833770095834454
+    second: circle 2_10
+  - first:
+      213: 4141603382238210740
+    second: circle 2_11
+  - first:
+      213: -2606209894600982339
+    second: circle 2_12
+  - first:
+      213: -3129842647638933487
+    second: circle 2_13
+  - first:
+      213: -7823269458027498257
+    second: circle 2_14
+  - first:
+      213: -3161586343337159629
+    second: circle 2_15
+  - first:
+      213: -1146201005402998696
+    second: circle 2_16
+  - first:
+      213: 4184017546019697933
+    second: circle 2_17
+  - first:
+      213: -4557851912336291933
+    second: circle 2_18
+  - first:
+      213: -5717391021478466905
+    second: circle 2_19
+  - first:
+      213: 2560549328090242805
+    second: circle 2_20
+  - first:
+      213: 6387250512418712475
+    second: circle 2_21
+  - first:
+      213: 650540008126420314
+    second: circle 2_22
+  - first:
+      213: 5076028780797338076
+    second: circle 2_23
+  - first:
+      213: -1887884058941245583
+    second: circle 2_24
+  - first:
+      213: -950376073021784151
+    second: circle 2_25
+  - first:
+      213: 4539566353955898018
+    second: circle 2_26
+  - first:
+      213: -3779621466182566423
+    second: circle 2_27
+  - first:
+      213: -3679653733002049951
+    second: circle 2_28
+  - first:
+      213: 4466563656016279374
+    second: circle 2_29
+  - first:
+      213: -2569039261328374764
+    second: circle 2_30
+  - first:
+      213: -8813211028797506476
+    second: circle 2_31
+  - first:
+      213: -4707524282986441264
+    second: circle 2_32
+  - first:
+      213: -935711682024805589
+    second: circle 2_33
+  - first:
+      213: -2948013909826723418
+    second: circle 2_34
+  - first:
+      213: 3095862259476587632
+    second: circle 2_35
+  - first:
+      213: -4746982390760708090
+    second: circle 2_36
+  - first:
+      213: -7178284072408899587
+    second: circle 2_37
+  - first:
+      213: 6175856937543625428
+    second: circle 2_38
+  - first:
+      213: -8451867697850536919
+    second: circle 2_39
+  - first:
+      213: 1919558738612909387
+    second: circle 2_40
+  - first:
+      213: -1794903764098573972
+    second: circle 2_41
+  - first:
+      213: -2546953670821192985
+    second: circle 2_42
+  - first:
+      213: 1466921305250923269
+    second: circle 2_43
+  - first:
+      213: -328073712254078721
+    second: circle 2_44
+  - first:
+      213: 6524972157068019721
+    second: circle 2_45
+  - first:
+      213: 6203725129962440130
+    second: circle 2_46
+  - first:
+      213: -7103465364818259002
+    second: circle 2_47
+  - first:
+      213: -8814062545010064669
+    second: circle 2_48
+  - first:
+      213: -6853144500353536961
+    second: circle 2_49
+  - first:
+      213: 5501214237806714802
+    second: circle 2_50
+  - first:
+      213: -5676079041516539337
+    second: circle 2_51
+  - first:
+      213: 3683242946539212690
+    second: circle 2_52
+  - first:
+      213: 2383611317599952800
+    second: circle 2_53
+  - first:
+      213: -7905965864717048831
+    second: circle 2_54
+  - first:
+      213: -2851725715325115559
+    second: circle 2_55
+  - first:
+      213: 3750983553649877130
+    second: circle 2_56
+  - first:
+      213: 203970345936576048
+    second: circle 2_57
+  - first:
+      213: 4095190954628300171
+    second: circle 2_58
+  - first:
+      213: -6425833577128310383
+    second: circle 2_59
+  - first:
+      213: 5641183180770233378
+    second: circle 2_60
+  - first:
+      213: -7532174440827309998
+    second: circle 2_61
+  - first:
+      213: 3062273902833899858
+    second: circle 2_62
+  - first:
+      213: -7648931538612847751
+    second: circle 2_63
+  - first:
+      213: 741561749105455798
+    second: circle 2_64
+  - first:
+      213: -4646884881602153823
+    second: circle 2_65
+  - first:
+      213: 1848029200681388787
+    second: circle 2_66
+  - first:
+      213: -8861700764941696858
+    second: circle 2_67
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: circle 2_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3a3c5bae363611f0800000000000000
+      internalID: -1074611818290464194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 160
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 311dd4c23d7934e30800000000000000
+      internalID: 4486596587028336915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_2
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 160
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b967ac7f690b27530800000000000000
+      internalID: 3851334793804019355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 160
+        width: 48
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48b9aa6271382cb80800000000000000
+      internalID: -8375988221499499644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 146
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f5fef8b7e898f800800000000000000
+      internalID: 646434667536250353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78eb3224aca7cb0f0800000000000000
+      internalID: -1099869199873622393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_6
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 174
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88fa80a4b10af1860800000000000000
+      internalID: 7502891543289180040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_7
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 174
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c74f49ba6b66800800000000000000
+      internalID: 605372047982623814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_8
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef3c6602c7852bbb0800000000000000
+      internalID: -4921774152619736066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 144
+        width: 43
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c469b7309b1d0d0c0800000000000000
+      internalID: -4552908630713985460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_10
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 145
+        width: 45
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa80150e98972fe0800000000000000
+      internalID: -1213833770095834454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_11
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 151
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba6dde355ee97930800000000000000
+      internalID: 4141603382238210740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_12
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db0433eb8e1e4dbd0800000000000000
+      internalID: -2606209894600982339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_13
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 146
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1100d90d1b09094d0800000000000000
+      internalID: -3129842647638933487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_14
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 146
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe4bb1c90e92e6390800000000000000
+      internalID: -7823269458027498257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_15
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 144
+        width: 44
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33499a6b8f9cf14d0800000000000000
+      internalID: -3161586343337159629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_16
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 145
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85832c72240e710f0800000000000000
+      internalID: -1146201005402998696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d05718c4acd901a30800000000000000
+      internalID: 4184017546019697933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 112
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a74c5295d14fb0c0800000000000000
+      internalID: -4557851912336291933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_19
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 112
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aaa4c2782fb7a0b0800000000000000
+      internalID: -5717391021478466905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_20
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 112
+        width: 48
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fe1faa2c06e88320800000000000000
+      internalID: 2560549328090242805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 98
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9b262cff7214a850800000000000000
+      internalID: 6387250512418712475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_22
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a551e80d0be270900800000000000000
+      internalID: 650540008126420314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_23
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 126
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd1a51d384da17640800000000000000
+      internalID: 5076028780797338076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_24
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 126
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1773fa96373ecc5e0800000000000000
+      internalID: -1887884058941245583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_25
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9af71843ff59fc2f0800000000000000
+      internalID: -950376073021784151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_26
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 43
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a24bd91c87cffe30800000000000000
+      internalID: 4539566353955898018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_27
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 97
+        width: 45
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ed3fb24d461c8bc0800000000000000
+      internalID: -3779621466182566423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_28
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 103
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16609fbec6e3fecc0800000000000000
+      internalID: -3679653733002049951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_29
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e473583fafb6cfd30800000000000000
+      internalID: 4466563656016279374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_30
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4148d763760f85cd0800000000000000
+      internalID: -2569039261328374764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_31
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45c38f1834f21b580800000000000000
+      internalID: -8813211028797506476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_32
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 96
+        width: 44
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d5511d2b938baeb0800000000000000
+      internalID: -4707524282986441264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_33
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 97
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2b6abcce2fa303f0800000000000000
+      internalID: -935711682024805589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_34
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a12edfd7fc8617d0800000000000000
+      internalID: -2948013909826723418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_35
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 64
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 074e3a98256b6fa20800000000000000
+      internalID: 3095862259476587632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_36
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 64
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6086cab8aa45f1eb0800000000000000
+      internalID: -4746982390760708090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_37
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 48
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dff19371bac916c90800000000000000
+      internalID: -7178284072408899587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_38
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 50
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4da6be1e92d05b550800000000000000
+      internalID: 6175856937543625428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_39
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92c2505db1fe4ba80800000000000000
+      internalID: -8451867697850536919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_40
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 78
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b45f484a084a3aa10800000000000000
+      internalID: 1919558738612909387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_41
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 78
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6994ee49883717e0800000000000000
+      internalID: -1794903764098573972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_42
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ea5357712767acd0800000000000000
+      internalID: -2546953670821192985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_43
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 48
+        width: 43
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5030fe0b72d8b5410800000000000000
+      internalID: 1466921305250923269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_44
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 49
+        width: 45
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff0b3f862b2727bf0800000000000000
+      internalID: -328073712254078721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_45
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 55
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9088a572b9b5d8a50800000000000000
+      internalID: 6524972157068019721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_46
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c5439f032f081650800000000000000
+      internalID: 6203725129962440130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_47
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 50
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c397bfe2eb6b6d90800000000000000
+      internalID: -7103465364818259002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_48
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 50
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e2899070d82ea580800000000000000
+      internalID: -8814062545010064669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_49
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 48
+        width: 44
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3c610ee26db4e0a0800000000000000
+      internalID: -6853144500353536961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_50
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 49
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bf5acdd33d385c40800000000000000
+      internalID: 5501214237806714802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_51
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 732fd555f248a31b0800000000000000
+      internalID: -5676079041516539337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_52
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 16
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29fcee9f1f18d1330800000000000000
+      internalID: 3683242946539212690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_53
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 16
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0af552c4dd9441120800000000000000
+      internalID: 2383611317599952800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_54
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 48
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1042d230fed584290800000000000000
+      internalID: -7905965864717048831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_55
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 2
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 953233d2292ac68d0800000000000000
+      internalID: -2851725715325115559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_56
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8022a12bab2e0430800000000000000
+      internalID: 3750983553649877130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_57
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03e534ee2f5a4d200800000000000000
+      internalID: 203970345936576048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_58
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8d330ad97a05d830800000000000000
+      internalID: 4095190954628300171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_59
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1994d79386ad2d6a0800000000000000
+      internalID: -6425833577128310383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_60
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 43
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22cc7b2f632894e40800000000000000
+      internalID: 5641183180770233378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_61
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1
+        width: 45
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2503634d047587790800000000000000
+      internalID: -7532174440827309998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_62
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 7
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2591d57d3e16f7a20800000000000000
+      internalID: 3062273902833899858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_63
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97bf2b99a4989d590800000000000000
+      internalID: -7648931538612847751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_64
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 2
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2b27a5b7e8a4a00800000000000000
+      internalID: 741561749105455798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_65
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 2
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a278f702d2f28fb0800000000000000
+      internalID: -4646884881602153823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_66
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 0
+        width: 44
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fac92944c485a910800000000000000
+      internalID: 1848029200681388787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle 2_67
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 1
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a0c7d70b1ae40580800000000000000
+      internalID: -8861700764941696858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      circle 2_0: -1074611818290464194
+      circle 2_1: 4486596587028336915
+      circle 2_10: -1213833770095834454
+      circle 2_11: 4141603382238210740
+      circle 2_12: -2606209894600982339
+      circle 2_13: -3129842647638933487
+      circle 2_14: -7823269458027498257
+      circle 2_15: -3161586343337159629
+      circle 2_16: -1146201005402998696
+      circle 2_17: 4184017546019697933
+      circle 2_18: -4557851912336291933
+      circle 2_19: -5717391021478466905
+      circle 2_2: 3851334793804019355
+      circle 2_20: 2560549328090242805
+      circle 2_21: 6387250512418712475
+      circle 2_22: 650540008126420314
+      circle 2_23: 5076028780797338076
+      circle 2_24: -1887884058941245583
+      circle 2_25: -950376073021784151
+      circle 2_26: 4539566353955898018
+      circle 2_27: -3779621466182566423
+      circle 2_28: -3679653733002049951
+      circle 2_29: 4466563656016279374
+      circle 2_3: -8375988221499499644
+      circle 2_30: -2569039261328374764
+      circle 2_31: -8813211028797506476
+      circle 2_32: -4707524282986441264
+      circle 2_33: -935711682024805589
+      circle 2_34: -2948013909826723418
+      circle 2_35: 3095862259476587632
+      circle 2_36: -4746982390760708090
+      circle 2_37: -7178284072408899587
+      circle 2_38: 6175856937543625428
+      circle 2_39: -8451867697850536919
+      circle 2_4: 646434667536250353
+      circle 2_40: 1919558738612909387
+      circle 2_41: -1794903764098573972
+      circle 2_42: -2546953670821192985
+      circle 2_43: 1466921305250923269
+      circle 2_44: -328073712254078721
+      circle 2_45: 6524972157068019721
+      circle 2_46: 6203725129962440130
+      circle 2_47: -7103465364818259002
+      circle 2_48: -8814062545010064669
+      circle 2_49: -6853144500353536961
+      circle 2_5: -1099869199873622393
+      circle 2_50: 5501214237806714802
+      circle 2_51: -5676079041516539337
+      circle 2_52: 3683242946539212690
+      circle 2_53: 2383611317599952800
+      circle 2_54: -7905965864717048831
+      circle 2_55: -2851725715325115559
+      circle 2_56: 3750983553649877130
+      circle 2_57: 203970345936576048
+      circle 2_58: 4095190954628300171
+      circle 2_59: -6425833577128310383
+      circle 2_6: 7502891543289180040
+      circle 2_60: 5641183180770233378
+      circle 2_61: -7532174440827309998
+      circle 2_62: 3062273902833899858
+      circle 2_63: -7648931538612847751
+      circle 2_64: 741561749105455798
+      circle 2_65: -4646884881602153823
+      circle 2_66: 1848029200681388787
+      circle 2_67: -8861700764941696858
+      circle 2_7: 605372047982623814
+      circle 2_8: -4921774152619736066
+      circle 2_9: -4552908630713985460
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

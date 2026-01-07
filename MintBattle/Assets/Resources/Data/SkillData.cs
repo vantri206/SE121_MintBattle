@@ -1,5 +1,6 @@
 using UnityEngine;
-
+public enum SkillType { Active, Passive }
+public enum PassiveTarget { None, AttackBoost, HpBoost, AllStatsBoost, CritRate, Lifesteal }
 public enum SkillTargetType
 {
     SingleEnemy,    
@@ -15,8 +16,9 @@ public class SkillData : ScriptableObject
     public string Name;          
     [TextArea]
     public string Description;     
-    public Sprite Image;           
+    public Sprite Image;
 
+    public SkillType type;
     public int Cooldown;         
 
     public SkillTargetType TargetType;
@@ -28,4 +30,8 @@ public class SkillData : ScriptableObject
 
     public bool isSkillAttack = true;
     public bool isSkillHeal = false;
+
+    [Header("Passive Config")]
+    public PassiveTarget passiveTarget;
+    public float passiveValue;
 }

@@ -325,6 +325,7 @@ MonoBehaviour:
   index: 1
   heroAvatar: {fileID: 5681363902938250042}
   heroLevel: {fileID: 8869607372412311572}
+  heroId: {fileID: 3446620504888822295}
   button: {fileID: 4378292722618056499}
 --- !u!223 &4244592733157939419
 Canvas:
@@ -340,13 +341,13 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 1
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: -1
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2107722199
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &4706773017552200695

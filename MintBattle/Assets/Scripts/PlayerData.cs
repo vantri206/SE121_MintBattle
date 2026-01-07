@@ -4,9 +4,8 @@ public class PlayerProfile : MonoBehaviour
 {
     public static PlayerProfile Instance;
 
-    public string WalletAddress; 
-    public string PlayerName;   
-
+    public string WalletAddress;
+    public string PlayerName;
     private void Awake()
     {
         if (Instance == null)
@@ -25,8 +24,7 @@ public class PlayerProfile : MonoBehaviour
 
     private void LoadProfile()
     {
-        string saveKey = $"PlayerName_{WalletAddress}";
-
+        /* string saveKey = $"PlayerName_{WalletAddress}";
         if (PlayerPrefs.HasKey(saveKey))
         {
             this.PlayerName = PlayerPrefs.GetString(saveKey);
@@ -36,6 +34,10 @@ public class PlayerProfile : MonoBehaviour
             this.PlayerName = ShortenAddress(WalletAddress);
             SaveCustomName(this.PlayerName);
         }
+        */
+
+        this.PlayerName = "0x..." + ShortenAddress(WalletAddress);
+        SaveCustomName(this.PlayerName); 
 
         Debug.Log($"Login Success: {WalletAddress} as {PlayerName}");
     }
@@ -49,7 +51,7 @@ public class PlayerProfile : MonoBehaviour
 
     private string ShortenAddress(string address)
     {
-        if (string.IsNullOrEmpty(address) || address.Length < 5) return "0000";
+        if (string.IsNullOrEmpty(address) || address.Length < 4) return "0xFFFF";
         return address.Substring(address.Length - 3);
     }
 }

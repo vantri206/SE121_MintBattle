@@ -95,9 +95,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void InventoryUpdate()
     {
-        allHeroes.Clear();
         allHeroes = PlayerInventory.Instance.GetAllHeroes();
-        Debug.Log(allHeroes.Count);
         RenderPage(0);
     }
     public void OnCardClicked(int index)

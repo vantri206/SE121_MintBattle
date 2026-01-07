@@ -138,8 +138,7 @@ namespace Thirdweb.Unity
             string entryPoint = null,
             string bundlerUrl = null,
             string paymasterUrl = null,
-            TokenPaymaster tokenPaymaster = TokenPaymaster.NONE
-        )
+            TokenPaymaster tokenPaymaster = TokenPaymaster.NONE)
         {
             this.SponsorGas = sponsorGas;
             this.FactoryAddress = factoryAddress;

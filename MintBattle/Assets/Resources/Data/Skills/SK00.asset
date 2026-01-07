@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dec6f4424729149b53a71a93bd03a3, type: 3}
+  m_Name: SK00
+  m_EditorClassIdentifier: 
+  Id: SK00
+  Name: End Turn
+  Description: End current turn
+  Image: {fileID: 808932237, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
+  type: 0
+  Cooldown: 0
+  TargetType: 1
+  AttackMultiplier: 0
+  vfxPrefab: {fileID: 0}
+  castDelay: 0
+  isSkillAttack: 0
+  isSkillHeal: 0
+  passiveTarget: 0
+  passiveValue: 0

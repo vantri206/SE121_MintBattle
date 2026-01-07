@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: SK01
   Name: Fire Ball
-  Description: Attack single enemy with a fireball, deal 200% ATK damage
+  Description: Attack single enemy, deal 200% ATK damage
   Image: {fileID: 808932237, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
   Cooldown: 1
   TargetType: 0
   AttackMultiplier: 2
   vfxPrefab: {fileID: 5448198474345254413, guid: 76a7ab69dbeb08841bddcbced72c3f0e, type: 3}
-  castDelay: 1.5
+  castDelay: 1.2
   isSkillAttack: 1
   isSkillHeal: 0

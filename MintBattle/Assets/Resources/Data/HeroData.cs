@@ -5,8 +5,6 @@ public class HeroData : ScriptableObject
 {
     public string Id;
 
-    public string Name;
-
     public int  BaseHP;
     public int BaseAttack;
     public int BaseDefense;

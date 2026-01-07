@@ -1,67 +1,323 @@
-﻿using UnityEngine;
+﻿using Fusion;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using Unity.Mathematics;
+using UnityEngine;
 
-public enum BattleState { Start, PlayerTurn, EnemyTurn, SelectingSkill, SelectingTarget, Win, Lose }
+public enum BattleState { WaitingForPlayers, PlayerTurn, SelectingSkill, SelectingTarget, EnemyTurn, Busy, Win, Lose }
 
-public class BattleSystem : MonoBehaviour
+public class BattleSystem : NetworkBehaviour
 {
     public static BattleSystem Instance;
 
-    [Header("References")]
-    public GameObject heroPrefab;
-    public BattleHUD battleHUD;
+    [Header("Network References")]
+    public NetworkObject heroNetPrefab;
     public Transform[] heroSpawnPoints;
     public Transform[] enemySpawnPoints;
+    public BattleHUD battleHUD;
 
-    [Header("UI Helpers")]
-    public GameObject selectionMarkerPrefab; 
-    private GameObject currentMarker;       
+    [Header("Visual Helpers")]
+    public GameObject selectionMarkerPrefab;
+    private GameObject currentMarker;
 
-    [Header("State")]
-    public BattleState state;
+    [Header("Network State")]
+    [Networked] public int PlayersReadyCount { get; set; } = 0;
 
-    private List<BattleUnit> allUnits = new List<BattleUnit>();
-    private int currentTurnIndex = 0;
+    public BattleState localState;
+
+    public List<BattleUnit> allUnits = new List<BattleUnit>();
 
     private int currentSkillIndex = 0;
     private List<RuntimeSkill> currentActiveSkills;
-
-    // --- TARGETING VARIABLES ---
     private RuntimeSkill selectedSkill;
     private List<BattleUnit> validTargets = new List<BattleUnit>();
     private int currentTargetIndex = 0;
 
-    public string ID_AI = "0xAI";
+    private SignatureService sigService;
+    public int PendingRewardId { get; private set; }
+    public string PendingSignature { get; private set; }
+    public string MyWalletId => PlayerProfile.Instance.WalletAddress;
+    public string MyName => PlayerProfile.Instance.PlayerName;
+
+    public ItemDropManager itemDropManager;
+
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
+        sigService = FindFirstObjectByType<SignatureService>();
+    }
+
+    public override void Spawned()
+    {
+        localState = BattleState.WaitingForPlayers;
+        RPC_RegisterPlayerInfo(PlayerProfile.Instance.WalletAddress, PlayerProfile.Instance.PlayerName);
+        StartCoroutine(SpawnMyTeamRoutine());
+    }
+
+    IEnumerator SpawnMyTeamRoutine()
+    {
+        yield return null;
+        List<string> myTeamIds = TeamManager.Instance.GetHeroesInTeam(TeamManager.Instance.CurrentBattleTeamIndex).ToList();
+        string myWallet = MyWalletId;
+        string myName = MyName;
+
+        int index = 0;
+        foreach (string heroId in myTeamIds)
         {
-            Destroy(gameObject);
+            Hero hero = PlayerInventory.Instance.GetHeroById(heroId);
+            if (hero != null)
+            {
+                int currentIndex = index;
+
+                Vector3 spawnPos = Vector3.zero;
+                if (Object.HasStateAuthority) spawnPos = heroSpawnPoints[index].position;
+                else spawnPos = enemySpawnPoints[index].position;
+
+                NetworkObject no = Runner.Spawn(heroNetPrefab, spawnPos, Quaternion.identity, Runner.LocalPlayer,
+                    onBeforeSpawned: (runner, obj) =>
+                    {
+                        BattleUnit unit = obj.GetComponent<BattleUnit>();
+                        if (unit != null)
+                        {
+                            unit.NetworkSetup(myWallet, myName, hero, currentIndex);
+                        }
+                    }
+                );
+                index++;
+            }
+        }
+        RPC_PlayerReady();
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_RegisterPlayerInfo(string walletId, string playerName)
+    {
+        if (battleHUD != null)
+        {
+            bool isMe = (walletId == MyWalletId);
+            battleHUD.UpdatePlayerName(isMe, playerName);
+        }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_PlayerReady()
+    {
+        PlayersReadyCount++;
+        if (PlayersReadyCount >= 2)
+        {
+            RPC_InitialSortAndStart();
+        }
+    }
+
+    public void RegisterUnit(BattleUnit unit)
+    {
+        allUnits.Add(unit);
+    }
+
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_InitialSortAndStart()
+    {
+        SortUnits();
+
+        if (Object.HasStateAuthority)
+        {
+            RPC_StartTurn();
+        }
+    }
+
+    void SortUnits()
+    {
+        allUnits.Sort((a, b) =>
+        {
+            int speedA = a.Speed;
+            int speedB = b.Speed;
+            if (speedA != speedB)
+            {
+                return speedB.CompareTo(speedA);
+            }
+
+            return a.Object.Id.ToString().CompareTo(b.Object.Id.ToString());
+        });
+
+        string order = "Turn Order: ";
+        foreach (var u in allUnits) order += $"{u.unitName}({u.Speed}) > ";
+        Debug.Log(order);
+
+        if (allUnits.Count > 0)
+            battleHUD.UpdateTurnOrderBar(allUnits, allUnits[0]);
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_StartTurn()
+    {
+        if (allUnits.Count == 0) return;
+
+        BattleUnit currentUnit = allUnits[0];
+
+        if (currentUnit.CurrentHP <= 0)
+        {
+            MoveCurrentUnitToBack();
+            if (Object.HasStateAuthority) RPC_StartTurn();
             return;
         }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 
-    void Start()
-    {
-        state = BattleState.Start;
-        StartCoroutine(SetupBattle());
-    }
+        currentUnit.OnTurnStart();
 
-    void Update()
-    {
-        if (state == BattleState.SelectingTarget)
+        battleHUD.UpdateHeroStatus(currentUnit);
+
+        bool isMyTurn = (currentUnit.OwnerId == MyWalletId);
+        battleHUD.UpdateTurnIndicator(isMyTurn);
+
+        battleHUD.UpdateTurnOrderBar(allUnits, currentUnit);
+
+        if (currentUnit.OwnerId == MyWalletId)
         {
-            HandleTargetSelectionInput();
+            localState = BattleState.SelectingSkill;
+            currentSkillIndex = 0;
+            currentActiveSkills = currentUnit.ActiveSkills;
+
+            battleHUD.EnableActions(true);
+            battleHUD.SetupSkillButtons(currentActiveSkills);
+            battleHUD.UpdateSkillSelectionUI(currentSkillIndex);
         }
-        else if (state == BattleState.SelectingSkill)
+        else
+        {
+            localState = BattleState.EnemyTurn;
+            battleHUD.EnableActions(false);
+            if (currentMarker) currentMarker.SetActive(false);
+        }
+    }
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_EndTurn()
+    {
+        MoveCurrentUnitToBack();
+        if (Object.HasStateAuthority)
+        {
+            if (!CheckBattleOver())
+            {
+                RPC_StartTurn();
+            }
+        }
+    }
+    private void Update()
+    {
+        if (localState == BattleState.SelectingSkill)
         {
             HandleSkillSelectionInput();
         }
+        else if (localState == BattleState.SelectingTarget)
+        {
+            HandleTargetSelectionInput();
+        }
     }
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_PlayerSurrender(NetworkString<_64> looserWalletId)
+    {
+        Debug.Log($"Player {looserWalletId} wants to surrender!");
+
+        string winnerWalletId = "";
+
+        foreach (var unit in allUnits)
+        {
+            if (unit.OwnerId.ToString() != looserWalletId.ToString())
+            {
+                winnerWalletId = unit.OwnerId.ToString();
+                break;
+            }
+        }
+
+        if (!string.IsNullOrEmpty(winnerWalletId))
+        {
+            Authority_FinishMatch(winnerWalletId);
+        }
+    }
+    void HandleSkillSelectionInput()
+    {
+        if (currentActiveSkills == null || currentActiveSkills.Count == 0) return;
+
+        bool hasInput = false;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            currentSkillIndex++;
+            if (currentSkillIndex >= currentActiveSkills.Count) currentSkillIndex = 0;
+            hasInput = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        {
+            currentSkillIndex--;
+            if (currentSkillIndex < 0) currentSkillIndex = currentActiveSkills.Count - 1;
+            hasInput = true;
+        }
+
+        if (hasInput)
+        {
+            battleHUD.UpdateSkillSelectionUI(currentSkillIndex);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        {
+            OnSkillSelected(currentActiveSkills[currentSkillIndex]);
+        }
+    }
+
+    public void OnSkillSelected(RuntimeSkill skill)
+    {
+        if (localState != BattleState.SelectingSkill) return;
+
+        selectedSkill = skill;
+
+        if (skill.currentCooldown > 0) return;
+
+        switch (skill.skillData.TargetType)
+        {
+            case SkillTargetType.SingleEnemy:
+            case SkillTargetType.Ally:
+                StartTargetSelectionMode(skill.skillData.TargetType);
+                break;
+
+            case SkillTargetType.AllEnemies:
+                SendAttackRequest(allUnits[0], null, selectedSkill);
+                break;
+        }
+    }
+
+    void StartTargetSelectionMode(SkillTargetType type)
+    {
+        localState = BattleState.SelectingTarget;
+        battleHUD.EnableActions(false);
+
+        validTargets.Clear();
+        string myId = MyWalletId;
+
+        if (type == SkillTargetType.SingleEnemy)
+        {
+            validTargets = allUnits.Where(u => u.OwnerId != myId && u.CurrentHP > 0).ToList();
+        }
+        else if (type == SkillTargetType.Ally)
+        {
+            validTargets = allUnits.Where(u => u.OwnerId == myId && u.CurrentHP > 0).ToList();
+        }
+
+        validTargets = validTargets.OrderBy(u => u.transform.position.x).ToList();
+
+        if (validTargets.Count > 0)
+        {
+            currentTargetIndex = 0;
+            UpdateMarkerPosition();
+        }
+        else
+        {
+            CancelSelection();
+        }
+    }
+
     void HandleTargetSelectionInput()
     {
         if (validTargets.Count == 0) return;
@@ -98,26 +354,6 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    void ConfirmTargetSelection()
-    {
-        BattleUnit target = validTargets[currentTargetIndex];
-
-        if (currentMarker) currentMarker.SetActive(false);
-
-        StartCoroutine(ExecuteSkill_SingleTarget(allUnits[currentTurnIndex], target, selectedSkill));
-    }
-
-    void CancelSelection()
-    {
-        Debug.Log("Cancel target select");
-        if (currentMarker) currentMarker.SetActive(false);
-
-        state = BattleState.SelectingSkill;
-
-        battleHUD.EnableActions(true);
-
-        battleHUD.UpdateSkillSelectionUI(currentSkillIndex);
-    }
     void UpdateMarkerPosition()
     {
         BattleUnit target = validTargets[currentTargetIndex];
@@ -130,180 +366,99 @@ public class BattleSystem : MonoBehaviour
         if (currentMarker != null)
         {
             currentMarker.SetActive(true);
-
             Transform markerPos = target.transform.Find("VisualRoot/HeroUnitVisual/MarkerPosition");
+            if (markerPos == null) markerPos = target.transform;
             currentMarker.transform.position = markerPos.position;
         }
     }
 
-    IEnumerator SetupBattle()
+    void CancelSelection()
     {
-        int currentTeamIndex = TeamManager.Instance.CurrentBattleTeamIndex;
-        int index = 0;
-        foreach(string id in TeamManager.Instance.GetHeroesInTeam(currentTeamIndex))
+        if (currentMarker) currentMarker.SetActive(false);
+        localState = BattleState.SelectingSkill;
+        battleHUD.EnableActions(true);
+        battleHUD.UpdateSkillSelectionUI(currentSkillIndex);
+    }
+
+    void ConfirmTargetSelection()
+    {
+        BattleUnit target = validTargets[currentTargetIndex];
+        if (currentMarker) currentMarker.SetActive(false);
+
+        SendAttackRequest(allUnits[0], target, selectedSkill);
+    }
+
+    public void SendAttackRequest(BattleUnit attacker, BattleUnit target, RuntimeSkill skill)
+    {
+        localState = BattleState.Busy;
+        NetworkId targetNetId = target != null ? target.Object.Id : default;
+
+        RPC_RequestPerformAction(attacker.Object.Id, targetNetId, skill.skillData.Id);
+    }
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_SyncDamageOrHeal(NetworkId targetId, int value, bool isHeal)
+    {
+        if (Runner.TryFindObject(targetId, out NetworkObject targetObj))
         {
-            Hero hero = PlayerInventory.Instance.GetHeroById(id);
-            if(hero != null)
+            BattleUnit unit = targetObj.GetComponent<BattleUnit>();
+            if (unit != null)
             {
-                SpawnUnit(PlayerProfile.Instance.WalletAddress, hero, heroSpawnPoints[index]);
-                index++;
+                if (unit.Object.HasStateAuthority)
+                {
+                    if (isHeal)
+                    {
+                        unit.Heal(value);
+                    }
+                    else
+                    {
+                        unit.TakeDamage(value);
+                    }
+                }
+            }
+        }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_RequestPerformAction(NetworkId attackerId, NetworkId targetId, string skillId)
+    {
+        RPC_BroadcastPerformAction(attackerId, targetId, skillId);
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_BroadcastPerformAction(NetworkId attackerId, NetworkId targetId, string skillId)
+    {
+        BattleUnit attacker = Runner.FindObject(attackerId).GetComponent<BattleUnit>();
+        BattleUnit target = null;
+        if (targetId.IsValid) target = Runner.FindObject(targetId).GetComponent<BattleUnit>();
+
+        RuntimeSkill skillToExec = attacker.ActiveSkills.FirstOrDefault(s => s.skillData.Id == skillId);
+
+        if (skillToExec != null)
+        {
+            if (skillToExec.skillData.TargetType == SkillTargetType.AllEnemies)
+            {
+                StartCoroutine(ExecuteSkill_AllEnemies(attacker, skillToExec));
             }
             else
             {
-                Debug.Log("Error: Can't find hero has id: " + id);
+                StartCoroutine(ExecuteSkill_SingleTarget(attacker, target, skillToExec));
             }
-        }
-
-        SpawnUnit(ID_AI, new Hero("HR01", 20, "10"), enemySpawnPoints[0]);
-        SpawnUnit(ID_AI, new Hero("HR02", 20, "10"), enemySpawnPoints[1]);
-
-        allUnits = allUnits.OrderByDescending(hero => hero.speed).ToList();
-
-        battleHUD.UpdateTurnOrderBar(allUnits, allUnits[0]);
-
-        yield return new WaitForSeconds(1.0f);
-        currentTurnIndex = 0;
-        StartTurn();
-    }
-
-    void SpawnUnit(string ownerId, Hero hero, Transform spawnPoint)
-    {
-        GameObject go = Instantiate(heroPrefab, spawnPoint);
-        BattleUnit unit = go.GetComponent<BattleUnit>();
-        unit.SetupHero(hero, ownerId);
-        allUnits.Add(unit);
-    }
-
-    void StartTurn()
-    {
-        if (allUnits.Count == 0) return;
-        BattleUnit currentUnit = allUnits[0];
-
-        if (currentUnit.currentHP <= 0 || currentUnit.IsDead)
-        {
-            MoveCurrentUnitToBack(); // Đá nó xuống dưới
-            StartTurn(); // Gọi lại
-            return;
-        }
-
-        currentUnit.OnTurnStart();
-        battleHUD.UpdateHeroStatus(currentUnit);
-
-        ReorderUnitsStartTurn(currentUnit);
-
-        if (currentUnit.ownerId == PlayerProfile.Instance.WalletAddress)
-        {
-            state = BattleState.SelectingSkill; 
-            currentSkillIndex = 0;             
-            currentActiveSkills = currentUnit.ActiveSkills; 
-
-            battleHUD.SetupSkillButtons(currentActiveSkills);
-            battleHUD.UpdateSkillSelectionUI(currentSkillIndex);
-            battleHUD.EnableActions(true);
-        }
-        else
-        {
-            state = BattleState.EnemyTurn;
-            battleHUD.EnableActions(false);
-            StartCoroutine(EnemyTurnLogic(currentUnit));
-        }
-    }
-    void HandleSkillSelectionInput()
-    {
-        if (currentActiveSkills == null || currentActiveSkills.Count == 0) return;
-
-        bool hasInput = false;
-
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-            currentSkillIndex++;
-            if (currentSkillIndex >= currentActiveSkills.Count) currentSkillIndex = 0; 
-            hasInput = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
-        {
-            currentSkillIndex--;
-            if (currentSkillIndex < 0) currentSkillIndex = currentActiveSkills.Count - 1; 
-            hasInput = true;
-        }
-
-        if (hasInput)
-        {
-            battleHUD.UpdateSkillSelectionUI(currentSkillIndex);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
-        {
-            OnSkillSelected(currentActiveSkills[currentSkillIndex]);
-        }
-    }
-    public void OnSkillSelected(RuntimeSkill skill)
-    {
-        if (state != BattleState.SelectingSkill) return;
-
-        selectedSkill = skill;
-        Debug.Log($"Selected Skill: {skill.skillData.Name}");
-
-        switch (skill.skillData.TargetType)
-        {
-            case SkillTargetType.SingleEnemy:
-            case SkillTargetType.Ally: 
-                StartTargetSelectionMode(skill.skillData.TargetType);
-                break;
-
-            case SkillTargetType.AllEnemies:
-                StartCoroutine(ExecuteSkill_AllEnemies(allUnits[0], selectedSkill));
-                break;
-        }
-    }
-
-    void StartTargetSelectionMode(SkillTargetType type)
-    {
-        state = BattleState.SelectingTarget;
-        battleHUD.EnableActions(false);
-
-        validTargets.Clear();
-        string myId = PlayerProfile.Instance.WalletAddress;
-
-        if (type == SkillTargetType.SingleEnemy)
-        {
-            validTargets = allUnits.Where(u => u.ownerId != myId && u.currentHP > 0).ToList();
-        }
-        else if (type == SkillTargetType.Ally)
-        {
-            validTargets = allUnits.Where(u => u.ownerId == myId && u.currentHP > 0).ToList();
-        }
-        validTargets = validTargets.OrderBy(u => u.transform.position.x).ToList();
-
-        if (validTargets.Count > 0)
-        {
-            currentTargetIndex = 0; 
-            UpdateMarkerPosition();
-        }
-        else
-        {
-            Debug.Log("No target");
-            state = BattleState.PlayerTurn;
-            battleHUD.EnableActions(true);
         }
     }
     IEnumerator ExecuteSkill_SingleTarget(BattleUnit attacker, BattleUnit target, RuntimeSkill skill)
     {
-        state = BattleState.EnemyTurn;
+        localState = BattleState.Busy;
 
         if (attacker.animator != null)
             attacker.animator.SetTrigger("Attack");
 
-        Debug.Log($"{attacker.unitName} starts using {skill.skillData.Name}");
-
         yield return new WaitForSeconds(skill.skillData.castDelay);
+
+        bool isHitCompleted = false;
 
         if (skill.skillData.vfxPrefab != null)
         {
-            bool hasProjectileHit = false;
-
             Transform spawnPos = attacker.attackSpawnPoint != null ? attacker.attackSpawnPoint : attacker.transform;
-
             GameObject vfxObj = Instantiate(skill.skillData.vfxPrefab, spawnPos.position, Quaternion.identity);
             SkillProjectile projectile = vfxObj.GetComponent<SkillProjectile>();
 
@@ -311,55 +466,48 @@ public class BattleSystem : MonoBehaviour
             {
                 projectile.Setup(target.transform, () =>
                 {
-                    hasProjectileHit = true;
+                    PerformOnHitVisuals(target, skill);
+                    ApplyDamageLogic(attacker, target, skill);
+                    isHitCompleted = true;
                 });
+                yield return new WaitUntil(() => isHitCompleted);
             }
             else
             {
-                hasProjectileHit = true;
+                PerformOnHitVisuals(target, skill);
+                ApplyDamageLogic(attacker, target, skill);
             }
-            yield return new WaitUntil(() => hasProjectileHit);
         }
         else
         {
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.5f);
+            PerformOnHitVisuals(target, skill);
+            ApplyDamageLogic(attacker, target, skill);
         }
-        ApplyDamageLogic(attacker, target, skill);
 
-        yield return new WaitForSeconds(1f); 
-        NextTurn();
+        yield return new WaitForSeconds(1.0f);
+
+        if (Object.HasStateAuthority)
+        {
+            RPC_EndTurn();
+        }
     }
 
-    void ApplyDamageLogic(BattleUnit attacker, BattleUnit target, RuntimeSkill skill)
-    {
-        int dmg = CalculateDamage(attacker, skill.skillData.AttackMultiplier);
-
-        if (skill.skillData.isSkillHeal)
-        {
-            target.Heal(dmg);
-        }
-        else
-        {
-            target.TakeDamage(dmg); 
-        }
-    }
     IEnumerator ExecuteSkill_AllEnemies(BattleUnit attacker, RuntimeSkill skill)
     {
-        state = BattleState.EnemyTurn;
+        localState = BattleState.Busy;
         skill.currentCooldown = skill.skillData.Cooldown;
 
         if (attacker.animator != null)
             attacker.animator.SetTrigger("Attack");
 
-        Debug.Log($"{attacker.unitName} uses AOE: {skill.skillData.Name}");
-
         yield return new WaitForSeconds(skill.skillData.castDelay);
 
-        string myId = PlayerProfile.Instance.WalletAddress;
-        var enemies = allUnits.Where(u => u.ownerId != myId && u.currentHP > 0).ToList();
+        string attackerOwnerId = attacker.OwnerId.ToString();
+        var enemies = allUnits.Where(u => u.OwnerId.ToString() != attackerOwnerId && u.CurrentHP > 0).ToList();
 
         int totalProjectilesFired = 0;
-        int projectilesHitCount = 0;  
+        int projectilesHitCount = 0;
 
         Transform spawnPos = attacker.attackSpawnPoint != null ? attacker.attackSpawnPoint : attacker.transform;
 
@@ -368,7 +516,6 @@ public class BattleSystem : MonoBehaviour
             if (skill.skillData.vfxPrefab != null)
             {
                 totalProjectilesFired++;
-
                 GameObject vfxObj = Instantiate(skill.skillData.vfxPrefab, spawnPos.position, Quaternion.identity);
                 SkillProjectile projectile = vfxObj.GetComponent<SkillProjectile>();
 
@@ -376,21 +523,24 @@ public class BattleSystem : MonoBehaviour
                 {
                     projectile.Setup(enemy.transform, () =>
                     {
+                        PerformOnHitVisuals(enemy, skill);
                         ApplyDamageLogic(attacker, enemy, skill);
                         projectilesHitCount++;
                     });
                 }
                 else
                 {
+                    PerformOnHitVisuals(enemy, skill);
                     ApplyDamageLogic(attacker, enemy, skill);
                     projectilesHitCount++;
                 }
             }
             else
             {
+                PerformOnHitVisuals(enemy, skill);
                 ApplyDamageLogic(attacker, enemy, skill);
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
         }
 
         if (skill.skillData.vfxPrefab != null && totalProjectilesFired > 0)
@@ -401,107 +551,75 @@ public class BattleSystem : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
         }
+
         yield return new WaitForSeconds(1f);
-        NextTurn();
-    }
 
-    IEnumerator EnemyTurnLogic(BattleUnit enemy)
-    {
-        Debug.Log($"Enemy {enemy.unitName} is thinking...");
-        yield return new WaitForSeconds(0.5f);
-
-        RuntimeSkill chosenSkill = null;
-
-        foreach (var skill in enemy.ActiveSkills)
+        if (Object.HasStateAuthority)
         {
-            if (skill.currentCooldown <= 0)
+            RPC_EndTurn();
+        }
+    }
+    void PerformOnHitVisuals(BattleUnit target, RuntimeSkill skill)
+    {
+        if (skill.skillData.isSkillHeal)
+        {
+
+        }
+        else
+        {
+            if (target.animator != null)
             {
-                chosenSkill = skill;
-                break;
+                target.animator.SetTrigger("Hurt");
             }
         }
-
-        if (chosenSkill == null)
-        {
-            Debug.Log("Enemy has no skill ready! Skipping turn.");
-            yield return new WaitForSeconds(0.5f);
-            NextTurn();
-            yield break;
-        }
-
-        BattleUnit target = null;
-
-        switch (chosenSkill.skillData.TargetType)
-        {
-            case SkillTargetType.SingleEnemy:
-                target = allUnits.FirstOrDefault(u => u.ownerId != enemy.ownerId && u.currentHP > 0);
-
-                if (target != null)
-                {
-                    StartCoroutine(ExecuteSkill_SingleTarget(enemy, target, chosenSkill));
-                }
-                else
-                {
-                    state = BattleState.Lose;
-                    NextTurn();
-                }
-                break;
-
-            case SkillTargetType.AllEnemies:
-                bool hasTargets = allUnits.Any(u => u.ownerId != enemy.ownerId && u.currentHP > 0);
-
-                if (hasTargets)
-                {
-                    StartCoroutine(ExecuteSkill_AllEnemies(enemy, chosenSkill));
-                }
-                else
-                {
-                    NextTurn();
-                }
-                break;
-
-            case SkillTargetType.Ally:
-            target = allUnits.FirstOrDefault(u => u.ownerId == enemy.ownerId && u.currentHP > 0);
-            StartCoroutine(ExecuteSkill_SingleTarget(enemy, target, chosenSkill));
-            break;
-        }
     }
-    void NextTurn()
+    void ApplyDamageLogic(BattleUnit attacker, BattleUnit target, RuntimeSkill skill)
     {
-        if (CheckBattleOver()) return;
+        if (Object.HasStateAuthority)
+        {
+            int finalValue = Mathf.RoundToInt(2f * attacker.Damage * skill.skillData.AttackMultiplier);
+            bool isHeal = skill.skillData.isSkillHeal;
 
-        MoveCurrentUnitToBack();
-
-        StartTurn();
+            if (isHeal)
+            {
+                Debug.Log($"Server: {attacker.unitName} heals {target.unitName} for {finalValue} HP");
+            }
+            else
+            {
+                int roll = UnityEngine.Random.Range(0, 100);
+                if (roll < attacker.CritRate)
+                {
+                    finalValue *= 2;
+                    Debug.Log($"CRITICAL HIT! Rate: {attacker.CritRate}%");
+                }
+                Debug.Log($"Server: {attacker.unitName} deals {finalValue} damage to {target.unitName}");
+            }
+            RPC_SyncDamageOrHeal(target.Object.Id, finalValue, isHeal);
+        }
     }
 
     bool CheckBattleOver()
     {
-        string myId = PlayerProfile.Instance.WalletAddress;
+        var owners = allUnits.Select(u => u.OwnerId.ToString()).Distinct().ToList();
 
-        bool enemiesAlive = allUnits.Any(u => u.ownerId != myId && u.currentHP > 0);
-        bool playersAlive = allUnits.Any(u => u.ownerId == myId && u.currentHP > 0);
+        string winnerId = null;
+        int teamsAlive = 0;
 
-        if (!enemiesAlive)
+        foreach (var owner in owners)
         {
-            state = BattleState.Win;
-            Debug.Log("VICTORY!");
-            return true;
+            if (allUnits.Any(u => u.OwnerId.ToString() == owner && u.CurrentHP > 0))
+            {
+                teamsAlive++;
+                winnerId = owner.ToString();
+            }
         }
 
-        if (!playersAlive)
+        if (teamsAlive <= 1)
         {
-            state = BattleState.Lose;
-            Debug.Log("GAME OVER");
+            Authority_FinishMatch(winnerId);
             return true;
         }
-
         return false;
-    }
-
-    int CalculateDamage(BattleUnit attacker, float multiplier)
-    {
-        return Mathf.RoundToInt(attacker.damage * multiplier);
     }
     void MoveCurrentUnitToBack()
     {
@@ -510,12 +628,12 @@ public class BattleSystem : MonoBehaviour
         BattleUnit finishedUnit = allUnits[0];
         allUnits.RemoveAt(0);
 
-        var livingOthers = allUnits.Where(u => !u.IsDead).ToList();
-        var deadOthers = allUnits.Where(u => u.IsDead).ToList();
+        var livingOthers = allUnits.Where(u => u.CurrentHP > 0).ToList();
+        var deadOthers = allUnits.Where(u => u.CurrentHP <= 0).ToList();
 
         allUnits.Clear();
 
-        if (finishedUnit.IsDead)
+        if (finishedUnit.CurrentHP <= 0)
         {
             allUnits.AddRange(livingOthers);
             allUnits.AddRange(deadOthers);
@@ -527,22 +645,101 @@ public class BattleSystem : MonoBehaviour
             allUnits.Add(finishedUnit);
             allUnits.AddRange(deadOthers);
         }
+        if (allUnits.Count > 0)
+            battleHUD.UpdateTurnOrderBar(allUnits, allUnits[0]);
     }
-
-    public void ReorderUnitsStartTurn(BattleUnit currentUnit)
+    public void Authority_FinishMatch(string winnerWalletId)
     {
-        allUnits.Remove(currentUnit);
+        if (Object.HasStateAuthority)
+        {
+            if (itemDropManager == null) return;
 
-        var livingOthers = allUnits.Where(u => !u.IsDead).ToList();
-        var deadOthers = allUnits.Where(u => u.IsDead).ToList();
+            var reward = itemDropManager.GetRandomLoot();
+            string stringId = reward.itemData.Id;
+
+            int amount = 1;
+            int uidInt = UnityEngine.Random.Range(1000000, 999999999);
+            long uid = (long)uidInt;
+
+            string sig = "";
+            if (sigService != null)
+            {
+                sig = sigService.GenerateWeaponSignature(winnerWalletId, reward.tokenId, amount, uid);
+            }
+            RPC_EndBattle(winnerWalletId, (int)reward.tokenId, stringId, sig, amount, uid.ToString());
+        }
+    }
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_EndBattle(string winnerId, int rewardTokenId, string rewardStringId, string signature, int amount, string uid)
+    {
+        ClearBattlefield();
+
+        localState = (MyWalletId == winnerId) ? BattleState.Win : BattleState.Lose;
+
+        if (localState == BattleState.Win)
+        {
+            Debug.Log($"VICTORY! Reward: {rewardStringId} (TokenId: {rewardTokenId}) Amount: {amount}");
+
+            if (VictoryUI.Instance != null)
+            {
+                VictoryUI.Instance.SetupVictory(
+                    rewardTokenId,
+                    amount,      
+                    uid,        
+                    rewardStringId,
+                    signature
+                );
+            }
+            else
+            {
+                Debug.LogError("VictoryUI is NULL!");
+            }
+        }
+        else
+        {
+            Debug.Log("DEFEAT!");
+            if (LoseUI.Instance != null)
+            {
+                LoseUI.Instance.Show();
+            }
+        }
+    }
+    private void ClearBattlefield()
+    {
+        if (currentMarker != null)
+            currentMarker.SetActive(false);
+
+        foreach (var unit in allUnits.ToList())
+        {
+            if (unit != null)
+            {
+                if (Object.HasStateAuthority)
+                {
+                    if (unit.Object != null && unit.Object.IsValid)
+                    {
+                        Runner.Despawn(unit.Object);
+                    }
+                }
+
+                if (unit.gameObject != null)
+                {
+                    unit.gameObject.SetActive(false);
+                }
+            }
+        }
 
         allUnits.Clear();
+        validTargets.Clear();
 
-        allUnits.Add(currentUnit); 
-        allUnits.AddRange(livingOthers);
-        allUnits.AddRange(deadOthers);
-
-        battleHUD.UpdateTurnOrderBar(allUnits, allUnits[0]);
+        currentSkillIndex = 0;
+        currentTargetIndex = 0;
     }
-
+    public BattleUnit GetCurrentTurnUnit()
+    {
+        if (allUnits != null && allUnits.Count > 0)
+        {
+            return allUnits[0];
+        }
+        return null;
+    }
 }

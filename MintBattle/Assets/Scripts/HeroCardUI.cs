@@ -14,6 +14,8 @@ public class HeroCardUI : MonoBehaviour
 
     public GameObject heroAvatar;
     public GameObject heroLevel;
+    public GameObject heroId;
+
 
     public Button button;
     public static event Action<HeroCardUI, int> OnHeroCardClicked;
@@ -34,6 +36,7 @@ public class HeroCardUI : MonoBehaviour
         this.index = index;
         heroAvatar.GetComponent<Animator>().runtimeAnimatorController = hero.ClassData.animator;
         heroLevel.GetComponent<TMP_Text>().text = "Lv." + hero.Level.ToString();
+        heroId.GetComponent<TMP_Text>().text = $"#{int.Parse(hero.Id):D4}";
     }
     public void CardSelected()
     {

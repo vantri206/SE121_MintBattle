@@ -161,12 +161,12 @@ TextureImporter:
       name: sprite-sheet-151x100_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 300
-        width: 77
-        height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 55
+        y: 301
+        width: 75
+        height: 95
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: sprite-sheet-151x100_1
       rect:
         serializedVersion: 2
-        x: 204
-        y: 300
-        width: 78
-        height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 205
+        y: 301
+        width: 76
+        height: 95
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: sprite-sheet-151x100_2
       rect:
         serializedVersion: 2
-        x: 352
-        y: 300
-        width: 81
-        height: 93
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 353
+        y: 301
+        width: 79
+        height: 91
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -227,12 +227,12 @@ TextureImporter:
       name: sprite-sheet-151x100_3
       rect:
         serializedVersion: 2
-        x: 501
-        y: 300
-        width: 84
-        height: 94
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 502
+        y: 301
+        width: 82
+        height: 92
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -249,12 +249,12 @@ TextureImporter:
       name: sprite-sheet-151x100_4
       rect:
         serializedVersion: 2
-        x: 658
-        y: 300
-        width: 77
-        height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 659
+        y: 301
+        width: 75
+        height: 95
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -271,12 +271,12 @@ TextureImporter:
       name: sprite-sheet-151x100_5
       rect:
         serializedVersion: 2
-        x: 30
-        y: 201
-        width: 102
-        height: 93
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 31
+        y: 202
+        width: 100
+        height: 91
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -293,12 +293,12 @@ TextureImporter:
       name: sprite-sheet-151x100_6
       rect:
         serializedVersion: 2
-        x: 180
-        y: 201
-        width: 103
-        height: 93
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 181
+        y: 202
+        width: 101
+        height: 91
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -315,12 +315,12 @@ TextureImporter:
       name: sprite-sheet-151x100_7
       rect:
         serializedVersion: 2
-        x: 342
-        y: 202
-        width: 109
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 343
+        y: 203
+        width: 107
+        height: 80
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -337,12 +337,12 @@ TextureImporter:
       name: sprite-sheet-151x100_8
       rect:
         serializedVersion: 2
-        x: 492
-        y: 202
-        width: 112
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 493
+        y: 203
+        width: 110
+        height: 80
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -359,12 +359,12 @@ TextureImporter:
       name: sprite-sheet-151x100_9
       rect:
         serializedVersion: 2
-        x: 644
-        y: 202
-        width: 111
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 645
+        y: 203
+        width: 109
+        height: 80
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -381,12 +381,12 @@ TextureImporter:
       name: sprite-sheet-151x100_10
       rect:
         serializedVersion: 2
-        x: 40
-        y: 103
-        width: 108
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 41
+        y: 104
+        width: 106
+        height: 79
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -403,12 +403,12 @@ TextureImporter:
       name: sprite-sheet-151x100_11
       rect:
         serializedVersion: 2
-        x: 155
-        y: 102
-        width: 129
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 156
+        y: 103
+        width: 127
+        height: 88
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -425,12 +425,12 @@ TextureImporter:
       name: sprite-sheet-151x100_12
       rect:
         serializedVersion: 2
-        x: 302
-        y: 101
-        width: 133
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 303
+        y: 102
+        width: 131
+        height: 88
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -447,12 +447,12 @@ TextureImporter:
       name: sprite-sheet-151x100_13
       rect:
         serializedVersion: 2
-        x: 453
-        y: 101
-        width: 137
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 454
+        y: 102
+        width: 135
+        height: 88
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -469,12 +469,12 @@ TextureImporter:
       name: sprite-sheet-151x100_14
       rect:
         serializedVersion: 2
-        x: 657
-        y: 100
-        width: 72
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 658
+        y: 101
+        width: 70
+        height: 97
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -491,12 +491,12 @@ TextureImporter:
       name: sprite-sheet-151x100_15
       rect:
         serializedVersion: 2
-        x: 54
-        y: 1
-        width: 72
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 55
+        y: 2
+        width: 70
+        height: 97
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -513,7 +513,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 38a5784a3cb4c0645a666ca22af1fa2a
     internalID: 0
     vertices: []
     indices: 

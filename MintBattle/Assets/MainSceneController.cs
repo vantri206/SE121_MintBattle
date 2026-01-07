@@ -17,6 +17,8 @@ public class MainSceneController : MonoBehaviour
 
     public TeamSelectionUI teamSelectionUI;
 
+    public MatchMakingUI matchMakingUI;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -80,6 +82,6 @@ public class MainSceneController : MonoBehaviour
 
     public void EnterBattle()
     {
-        SceneManager.LoadScene("BattleScene");
+        matchMakingUI.StartMatchMaking();
     }
 }

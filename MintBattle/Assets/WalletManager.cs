@@ -1,23 +1,19 @@
-﻿using NBitcoin;
-using Nethereum.Model;
-using Nethereum.Util;
+﻿using Nethereum.Util;
+using Newtonsoft.Json;
+using Org.BouncyCastle.Utilities;
 using Reown.AppKit.Unity;
 using Reown.Sign.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using System.Numerics;
 using System.Threading.Tasks;
 using Thirdweb;
-using Thirdweb.Api;
 using Thirdweb.Unity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Newtonsoft.Json;
-using Nethereum.Contracts.Standards.ERC721;
-
 public class NFTManager : MonoBehaviour
 {
     public static NFTManager Instance { get; private set; }
@@ -27,13 +23,16 @@ public class NFTManager : MonoBehaviour
     public string CachedCoin { get; private set; } = "0";
     public string CachedHeroes { get; private set; } = "0";
     public List<Hero> CachedHeroList { get; private set; } = new List<Hero>();
+    public List<Item> CachedItemList { get; private set; } = new List<Item>();
 
     private bool isLoading = false;
+    private bool isWalletReady = false;
     public static event Action OnWalletDataUpdated;
 
     [Header("Contract Configuration")]
-    public string tokenContractAddress = "0x62AEC02A9773FBFa4A02455F05b850E542A9e5Db";
-    public string NFTContractAddress = "0x512763F3721cf5FDB5d6a86b50281EFC08ffEb6e";
+    private string tokenContractAddress = "0x6806c72Bcc5c0aF846FA3eCeAc2bbfA5613379AE";
+    private string NFTContractAddress = "0x59977A2a233AD617c4EE3a0D5C54a85Ad8b20c02";
+    private string itemContractAddress = "0x1a4dF372D0090F27B206DadF89edD1Be3cC46591";
     public int chainId = 84532;
 
     [Header("UI References")]
@@ -74,35 +73,23 @@ public class NFTManager : MonoBehaviour
         try
         {
             await InitializeWallet();
+
             SetupUI();
 
             if (AppKit.IsInitialized)
             {
-                if (AppKit.Account != null)
-                {
-                    Debug.Log("Found existing session. Reconnecting...");
-                    OnAccountConnected(this, EventArgs.Empty);
-                }
-                else
-                {
-                    InitializeDisconnectedState();
-                }
-            }
-            else
-            {
-                Debug.LogError("AppKit failed to initialize!");
-                InitializeDisconnectedState();
+                Debug.Log("AppKit Initialized. Waiting for account sync...");
             }
         }
         catch (System.Exception e)
         {
             Debug.LogError($"CRITICAL ERROR in Start: {e.Message}");
-            InitializeDisconnectedState();
         }
     }
 
     private async Task InitializeWallet()
     {
+        Debug.Log(Application.persistentDataPath);
         var config = new AppKitConfig
         {
             projectId = "964f616b8d0f4370b9c2892038388eb7",
@@ -126,11 +113,36 @@ public class NFTManager : MonoBehaviour
             enableAnalytics = false
         };
 
-        await AppKit.InitializeAsync(config);
-        AppKit.AccountConnected += OnAccountConnected;
-        AppKit.AccountDisconnected += OnAccountDisconnected;
+        try
+        {
+            await AppKit.InitializeAsync(config);
 
-        Debug.Log("Mint Battle wallet initialized successfully!");
+            int retry = 0;
+            while ((AppKit.NetworkController == null || !AppKit.IsInitialized) && retry < 25)
+            {
+                await Task.Delay(200);
+                retry++;
+            }
+
+            AppKit.AccountConnected -= OnAccountConnected;
+            AppKit.AccountDisconnected -= OnAccountDisconnected;
+
+            AppKit.AccountConnected += OnAccountConnected;
+            AppKit.AccountDisconnected += OnAccountDisconnected;
+
+            if (AppKit.Account != null)
+            {
+                Debug.Log($"Existing session found for: {AppKit.Account}");
+                await Task.Yield();
+                OnAccountConnected(this, EventArgs.Empty);
+            }
+
+            Debug.Log("Mint Battle wallet initialized successfully!");
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"Wallet Init Failed: {ex.Message}");
+        }
     }
 
     private void SetupUI()
@@ -143,11 +155,13 @@ public class NFTManager : MonoBehaviour
     private void InitializeDisconnectedState()
     {
         UpdateStatus("Login wallet to play game");
+        isWalletReady = false;
         UpdateAccount("", true);
         UpdateEthBalance("0 ETH", true);
-        UpdateTokenBalance("0 Coin", true);
+        UpdateTokenBalance("0 <sprite=0>", true);
         UpdateNFTBalance("0 Heroes", true);
         CachedHeroList.Clear();
+        CachedItemList.Clear();
         OnWalletDataUpdated?.Invoke();
 
         SetButtonStates(connectEnabled: true, disconnectEnabled: false, mintEnabled: false);
@@ -211,11 +225,11 @@ public class NFTManager : MonoBehaviour
 
             decimal readableBalance = (decimal)rawBalance / (decimal)BigInteger.Pow(10, 18);
             CachedCoin = readableBalance.ToString("0.##", CultureInfo.InvariantCulture);
-            UpdateTokenBalance($"{CachedCoin} Coin", silent);
+            UpdateTokenBalance($"{CachedCoin} <sprite=0>", silent);
         }
         catch
         {
-            UpdateTokenBalance("0 Coin", silent);
+            UpdateTokenBalance("0 <sprite=0>", silent);
         }
     }
 
@@ -232,29 +246,73 @@ public class NFTManager : MonoBehaviour
                 "balanceOf",
                 new object[] { account.Address }
             );
-
             UpdateNFTBalance($"{balance} Heroes", silent);
 
             if (ThirdwebManager.Instance != null)
             {
-                var contract = await ThirdwebManager.Instance.GetContract(NFTContractAddress, chainId: 84532);
-                var nftList = await contract.ERC721_GetOwnedNFTs(account.Address);
-
-                CachedHeroList.Clear();
-                foreach (var nft in nftList)
+                try
                 {
-                    Hero newHero = ConvertNftToHero(nft);
-                    if (newHero != null)
+                    var heroContract = await ThirdwebManager.Instance.GetContract(NFTContractAddress, chainId: chainId);
+                    var heroNFTList = await heroContract.ERC721_GetOwnedNFTs(account.Address);
+
+                    Debug.Log($"[NFTManager] Found {heroNFTList.Count} Heroes on blockchain.");
+
+                    CachedHeroList.Clear();
+                    foreach (var nft in heroNFTList)
                     {
-                        CachedHeroList.Add(newHero);
+                        Debug.Log($"Processing Hero TokenID: {nft.Metadata.Id}, Name: {nft.Metadata.Name}");
+
+                        Hero newHero = ConvertNftToHero(nft);
+                        if (newHero != null)
+                        {
+                            CachedHeroList.Add(newHero);
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"[NFTManager] Failed to fetch Heroes: {ex.Message}");
+                }
+
+                try
+                {
+                    var itemContract = await ThirdwebManager.Instance.GetContract(itemContractAddress, chainId: chainId);
+                    var itemNFTList = await itemContract.ERC1155_GetOwnedNFTs(account.Address);
+
+                    Debug.Log($"[NFTManager] Found {itemNFTList.Count} Items on blockchain.");
+
+                    CachedItemList.Clear();
+                    foreach (var nft in itemNFTList)
+                    {
+                        int quantity = (int)nft.QuantityOwned;
+
+                        Debug.Log($"Processing Item TokenID: {nft.Metadata.Id}, Name: {nft.Metadata.Name}, Quantity: {quantity}");
+                        ItemData dataSO = LoadItemDataFromNFT(nft);
+
+                        if (dataSO != null)
+                        {
+                            for (int i = 0; i < quantity; i++)
+                            {
+                                CachedItemList.Add(new Item(nft.Metadata.Id, dataSO));
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"[NFTManager] Failed to fetch Items: {ex.Message}");
+                }
+
                 if (!silent) OnWalletDataUpdated?.Invoke();
+            }
+            else
+            {
+                Debug.LogWarning("ThirdwebManager not found.");
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError($"Error CheckNFTBalance: {ex.Message}");
+            Debug.LogError($"CRITICAL ERROR CheckNFTBalance: {ex.Message}");
             UpdateNFTBalance("Error", silent);
         }
     }
@@ -265,39 +323,125 @@ public class NFTManager : MonoBehaviour
         public string trait_type;
         public object value;
     }
-
     private Hero ConvertNftToHero(NFT nft)
     {
         try
         {
-            string classId = "HR01";
+            // Default
+            string classId = "Wizard";
             int level = 1;
+            int passiveId = 0;
+            string tokenId = nft.Metadata.Id; 
+            if (nft.Metadata.Attributes == null)
+            {
+                Debug.LogWarning($"[NFTManager] Metadata is null for Token ID {tokenId}");
+                return null;
+            }
 
             if (nft.Metadata.Attributes != null)
             {
-                string json = JsonConvert.SerializeObject(nft.Metadata.Attributes);
-                var traits = JsonConvert.DeserializeObject<List<NftTrait>>(json);
-
-                if (traits != null)
+                try
                 {
-                    foreach (var trait in traits)
-                    {
-                        if (trait.trait_type == "Base ID" || trait.trait_type == "Class" || trait.trait_type == "heroType")
-                            classId = trait.value.ToString();
+                    string json = JsonConvert.SerializeObject(nft.Metadata.Attributes);
+                    var traits = JsonConvert.DeserializeObject<List<NftTrait>>(json);
 
-                        if (trait.trait_type == "Level")
-                            int.TryParse(trait.value.ToString(), out level);
+                    if (traits != null)
+                    {
+                        foreach (var trait in traits)
+                        {
+                            if (trait.value == null) continue;
+
+                            string valueStr = trait.value.ToString();
+                            string typeStr = trait.trait_type; 
+
+                            if (string.IsNullOrEmpty(typeStr)) continue;
+
+                            if (typeStr == "Class") classId = valueStr;
+                            else if (valueStr.StartsWith("HR")) classId = valueStr;
+                            else if (typeStr == "Level" && int.TryParse(valueStr, out int l)) level = l;
+                            else if (typeStr == "Passive Skill" || typeStr == "Passive Effect")
+                            {
+                                passiveId = ParseIdFromDescription(valueStr);
+                            }
+                            else if (typeStr == "Passive ID")
+                            {
+                                int.TryParse(valueStr, out passiveId);
+                            }
+                        }
                     }
                 }
+                catch (Exception attrEx)
+                {
+                    Debug.LogWarning($"[NFTManager] Error parsing attributes for Hero {tokenId}: {attrEx.Message}. Using default stats.");
+                }
             }
-            return new Hero(classId, level);
+
+            return new Hero(classId, level, passiveId, tokenId);
         }
-        catch
+        catch (Exception ex)
         {
-            return new Hero("HR01", 1);
+            Debug.LogError($"[NFTManager] FATAL Error converting Hero Token {nft.Metadata.Id}: {ex.Message}");
+            return null; 
         }
     }
+    private int ParseIdFromDescription(string description)
+    {
+        string desc = description.ToLower();
+        if (desc.Contains("20% attack")) return 1;
+        if (desc.Contains("20% health")) return 2;
+        if (desc.Contains("20% all")) return 3;
+        if (desc.Contains("100% crit")) return 4;
+        if (desc.Contains("health = 30%") || desc.Contains("turn")) return 5;
+        return 1;
+    }
+    private ItemData LoadItemDataFromNFT(NFT nft)
+    {
+        try
+        { 
+            if (string.IsNullOrEmpty(nft.Metadata.Id))
+            {
+                Debug.LogError($"[NFTManager] NFT Metadata ID is empty. Token might be invalid.");
+                return null;
+            }
+            if (string.IsNullOrEmpty(nft.Metadata.Name))
+            {
+                Debug.LogError($"[NFTManager] NFT Name is empty (TokenID: {nft.Metadata.Id}).");
+                return null;
+            }
+            string itemName = nft.Metadata.Name;
+            string resourceName = itemName.Trim();
 
+            ItemData dataSO = Resources.Load<ItemData>($"Data/Items/{resourceName}");
+
+            if (dataSO == null && !string.IsNullOrEmpty(nft.Metadata.Image))
+            {
+                try
+                {
+                    if (!nft.Metadata.Image.StartsWith("ipfs://"))
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(nft.Metadata.Image);
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
+                            dataSO = Resources.Load<ItemData>($"Data/Items/{fileName}");
+                        }
+                    }
+                }
+                catch { }
+            }
+
+            if (dataSO == null)
+            {
+                Debug.LogError($"[NFTManager] Missing .asset file for: '{itemName}'. Please create: 'Resources/Data/Items/{resourceName}.asset'");
+            }
+
+            return dataSO;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"[NFTManager] Error loading ItemData: {ex.Message}");
+            return null;
+        }
+    }
     public async Task MintNFT()
     {
         try
@@ -327,10 +471,18 @@ public class NFTManager : MonoBehaviour
         var account = AppKit.Account;
         if (account != null)
         {
+            Debug.Log("Connected! Checking Network...");
+
+            string currentChainId = AppKit.NetworkController.ActiveChain.ToString();
+
+            Debug.Log($"Net: ({currentChainId})");
+
             UpdateStatus("Wallet connected. Loading data...");
 
             UpdateAccount(account.Address, true);
             PlayerProfile.Instance.OnWalletConnected(account.Address);
+
+            isWalletReady = true;
 
             var t1 = CheckEthBalance(true);
             var t2 = CheckTokenBalance(true);
@@ -363,7 +515,7 @@ public class NFTManager : MonoBehaviour
 
     public async void RefreshAllBalances()
     {
-        if (isLoading) return; 
+        if (!isWalletReady || isLoading || !AppKit.IsInitialized) return;
         isLoading = true;
 
         UpdateStatus("Refreshing data...");

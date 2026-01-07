@@ -14,12 +14,11 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         Application.runInBackground = true;
-
-        DontDestroyOnLoad(gameObject);
     }
 
     public void StartPlayScene()

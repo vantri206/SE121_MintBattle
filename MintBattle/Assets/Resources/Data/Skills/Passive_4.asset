@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dec6f4424729149b53a71a93bd03a3, type: 3}
+  m_Name: Passive_4
+  m_EditorClassIdentifier: 
+  Id: passive_4
+  Name: CRIT UP
+  Description: 100% Crit Rate
+  Image: {fileID: 808932237, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
+  type: 1
+  Cooldown: 1
+  TargetType: 0
+  AttackMultiplier: 2
+  vfxPrefab: {fileID: 5448198474345254413, guid: 76a7ab69dbeb08841bddcbced72c3f0e, type: 3}
+  castDelay: 1.2
+  isSkillAttack: 1
+  isSkillHeal: 0
+  passiveTarget: 4
+  passiveValue: 1
