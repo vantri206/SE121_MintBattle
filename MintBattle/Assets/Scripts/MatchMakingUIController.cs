@@ -8,15 +8,25 @@ public class MatchMakingUI : MonoBehaviour
     public GameObject panelMatchmaking;
     public TMP_Text statusText;
     public Button cancelButton;
+    private void Awake()
+    {
+        if (MatchmakingManager.Instance == null)
+        {
+            MatchmakingManager.Instance = FindFirstObjectByType<MatchmakingManager>();
+        }
+    }
 
     private void Start()
     {
         if (panelMatchmaking != null) panelMatchmaking.SetActive(false);
-        if (cancelButton != null) cancelButton.onClick.AddListener(CancelMatchMaking);
     }
 
     private void OnEnable()
     {
+        if (MatchmakingManager.Instance == null)
+        {
+            MatchmakingManager.Instance = FindFirstObjectByType<MatchmakingManager>();
+        }
         if (MatchmakingManager.Instance != null)
         {
             MatchmakingManager.Instance.OnStatusChanged += UpdateStatusText;
@@ -26,6 +36,10 @@ public class MatchMakingUI : MonoBehaviour
 
     private void OnDisable()
     {
+        if (MatchmakingManager.Instance == null)
+        {
+            MatchmakingManager.Instance = FindFirstObjectByType<MatchmakingManager>();
+        }
         if (MatchmakingManager.Instance != null)
         {
             MatchmakingManager.Instance.OnStatusChanged -= UpdateStatusText;
@@ -55,6 +69,11 @@ public class MatchMakingUI : MonoBehaviour
 
     public void CancelMatchMaking()
     {
+        Debug.Log("Cancel");
+        if (MatchmakingManager.Instance == null)
+        {
+            MatchmakingManager.Instance = FindFirstObjectByType<MatchmakingManager>();
+        }
         if (MatchmakingManager.Instance != null)
         {
             MatchmakingManager.Instance.CancelMatchmaking();

@@ -190,13 +190,15 @@ public class BattleUnit : NetworkBehaviour
 
     public void OnTurnStart()
     {
-        if (Object.HasStateAuthority)
+        if (ActiveSkills != null)
         {
             foreach (var skill in ActiveSkills)
             {
                 skill.DecreaseCooldown(1);
             }
-
+        }
+        if (Object.HasStateAuthority)
+        {
             if (PassiveId == 5)
             {
                 int healAmount = Mathf.RoundToInt(Damage * 0.3f);

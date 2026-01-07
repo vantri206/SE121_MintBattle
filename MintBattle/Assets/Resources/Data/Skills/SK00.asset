@@ -15,9 +15,9 @@ MonoBehaviour:
   Id: SK00
   Name: End Turn
   Description: End current turn
-  Image: {fileID: 808932237, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
+  Image: {fileID: 208073142, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
   type: 0
-  Cooldown: 0
+  Cooldown: 3
   TargetType: 1
   AttackMultiplier: 0
   vfxPrefab: {fileID: 0}

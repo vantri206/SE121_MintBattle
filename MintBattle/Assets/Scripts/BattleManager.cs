@@ -9,7 +9,7 @@ using UnityEngine;
 
 public enum BattleState { WaitingForPlayers, PlayerTurn, SelectingSkill, SelectingTarget, EnemyTurn, Busy, Win, Lose }
 
-public class BattleSystem : NetworkBehaviour
+public class BattleSystem : NetworkBehaviour, IPlayerLeft
 {
     public static BattleSystem Instance;
 
@@ -173,17 +173,33 @@ public class BattleSystem : NetworkBehaviour
 
         bool isMyTurn = (currentUnit.OwnerId == MyWalletId);
         battleHUD.UpdateTurnIndicator(isMyTurn);
-
         battleHUD.UpdateTurnOrderBar(allUnits, currentUnit);
 
         if (currentUnit.OwnerId == MyWalletId)
         {
             localState = BattleState.SelectingSkill;
-            currentSkillIndex = 0;
-            currentActiveSkills = currentUnit.ActiveSkills;
+
+            currentActiveSkills = new List<RuntimeSkill>(currentUnit.ActiveSkills);
+
+            if (SkillDatabase.Instance != null)
+            {
+                SkillData skipData = SkillDatabase.Instance.GetSkillById("SK00");
+                if (skipData != null)
+                {
+                    currentActiveSkills.Add(new RuntimeSkill(skipData));
+                }
+            }
 
             battleHUD.EnableActions(true);
             battleHUD.SetupSkillButtons(currentActiveSkills);
+
+            currentSkillIndex = 0;
+            while (currentSkillIndex < currentActiveSkills.Count &&
+                   currentActiveSkills[currentSkillIndex].skillData.type == SkillType.Passive)
+            {
+                currentSkillIndex++;
+            }
+
             battleHUD.UpdateSkillSelectionUI(currentSkillIndex);
         }
         else
@@ -203,6 +219,26 @@ public class BattleSystem : NetworkBehaviour
             {
                 RPC_StartTurn();
             }
+        }
+    }
+    public void PlayerLeft(PlayerRef player)
+    {
+        if (localState == BattleState.WaitingForPlayers ||
+            localState == BattleState.Win ||
+            localState == BattleState.Lose)
+        {
+            return;
+        }
+
+        Debug.Log($"Player {player} disconnected.");
+
+        if (Runner.SessionInfo.PlayerCount < 2)
+        {
+            Debug.Log("Opponent disconnected! Force Victory.");
+
+            string myWallet = PlayerProfile.Instance.WalletAddress; 
+
+            Authority_FinishMatch(myWallet);
         }
     }
     private void Update()
@@ -242,17 +278,29 @@ public class BattleSystem : NetworkBehaviour
         if (currentActiveSkills == null || currentActiveSkills.Count == 0) return;
 
         bool hasInput = false;
+        int originalIndex = currentSkillIndex;
+        int count = currentActiveSkills.Count;
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
-            currentSkillIndex++;
-            if (currentSkillIndex >= currentActiveSkills.Count) currentSkillIndex = 0;
+            do
+            {
+                currentSkillIndex++;
+                if (currentSkillIndex >= count) currentSkillIndex = 0;
+            }
+            while (currentActiveSkills[currentSkillIndex].skillData.type == SkillType.Passive && currentSkillIndex != originalIndex);
+
             hasInput = true;
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
-            currentSkillIndex--;
-            if (currentSkillIndex < 0) currentSkillIndex = currentActiveSkills.Count - 1;
+            do
+            {
+                currentSkillIndex--;
+                if (currentSkillIndex < 0) currentSkillIndex = count - 1;
+            }
+            while (currentActiveSkills[currentSkillIndex].skillData.type == SkillType.Passive && currentSkillIndex != originalIndex);
+
             hasInput = true;
         }
 
@@ -263,13 +311,26 @@ public class BattleSystem : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
-            OnSkillSelected(currentActiveSkills[currentSkillIndex]);
+            RuntimeSkill selected = currentActiveSkills[currentSkillIndex];
+
+            if (selected.skillData.type != SkillType.Passive)
+            {
+                OnSkillSelected(selected);
+            }
         }
     }
 
     public void OnSkillSelected(RuntimeSkill skill)
     {
         if (localState != BattleState.SelectingSkill) return;
+
+        if (skill.skillData.type == SkillType.Passive) return;
+
+        if (skill.skillData.Id == "SK00")
+        {
+            RPC_RequestPerformAction(allUnits[0].Object.Id, default, "SK00");
+            return;
+        }
 
         selectedSkill = skill;
 
@@ -431,6 +492,12 @@ public class BattleSystem : NetworkBehaviour
         BattleUnit target = null;
         if (targetId.IsValid) target = Runner.FindObject(targetId).GetComponent<BattleUnit>();
 
+        if (skillId == "SK00")
+        {
+            StartCoroutine(ExecuteSkipTurn(attacker));
+            return;
+        }
+
         RuntimeSkill skillToExec = attacker.ActiveSkills.FirstOrDefault(s => s.skillData.Id == skillId);
 
         if (skillToExec != null)
@@ -445,9 +512,24 @@ public class BattleSystem : NetworkBehaviour
             }
         }
     }
+    IEnumerator ExecuteSkipTurn(BattleUnit attacker)
+    {
+        localState = BattleState.Busy;
+
+        Debug.Log($"{attacker.unitName} skips turn.");
+
+        yield return new WaitForSeconds(0.5f);
+
+        if (Object.HasStateAuthority)
+        {
+            RPC_EndTurn();
+        }
+    }
     IEnumerator ExecuteSkill_SingleTarget(BattleUnit attacker, BattleUnit target, RuntimeSkill skill)
     {
         localState = BattleState.Busy;
+
+        skill.currentCooldown = skill.skillData.Cooldown;
 
         if (attacker.animator != null)
             attacker.animator.SetTrigger("Attack");
@@ -492,10 +574,10 @@ public class BattleSystem : NetworkBehaviour
             RPC_EndTurn();
         }
     }
-
     IEnumerator ExecuteSkill_AllEnemies(BattleUnit attacker, RuntimeSkill skill)
     {
         localState = BattleState.Busy;
+
         skill.currentCooldown = skill.skillData.Cooldown;
 
         if (attacker.animator != null)
@@ -733,6 +815,15 @@ public class BattleSystem : NetworkBehaviour
 
         currentSkillIndex = 0;
         currentTargetIndex = 0;
+    }
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+        base.Despawned(runner, hasState);
+
+        if (localState != BattleState.Win && localState != BattleState.Lose && localState != BattleState.WaitingForPlayers)
+        {
+            MessageBox.Instance.ShowSuccess("No Internet Connection. Please reconnect and reload browser.");
+        }
     }
     public BattleUnit GetCurrentTurnUnit()
     {

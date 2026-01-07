@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: Attack single enemy, deal 200% ATK damage
   Image: {fileID: 218760387, guid: b9f8adfd312c31c4bbce98b4a74e1c2a, type: 3}
   type: 0
-  Cooldown: 1
+  Cooldown: 3
   TargetType: 0
   AttackMultiplier: 2
   vfxPrefab: {fileID: 5448198474345254413, guid: e3d8d9596bc571b4a973f3dc8b5ab480, type: 3}

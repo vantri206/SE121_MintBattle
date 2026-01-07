@@ -68,6 +68,17 @@ public class BattleHUD : MonoBehaviour
             if (btnUI != null)
             {
                 btnUI.Setup(skill);
+
+                if (skill.skillData.type == SkillType.Passive)
+                {
+                    btnUI.border.color = Color.gray;
+                }
+
+                if (skill.skillData.Id == "SK00")
+                {
+                    btnUI.border.color = Color.red;
+                }
+
                 skillButtons.Add(btnUI);
             }
         }

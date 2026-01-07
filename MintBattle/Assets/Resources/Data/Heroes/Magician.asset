@@ -24,4 +24,4 @@ MonoBehaviour:
   - SK05
   Image: {fileID: -728255665444098679, guid: 408e4d2de52f0e049856b2327083f559, type: 3}
   Avatar: {fileID: 2833711274697811677, guid: 9096e91bac8c8754b80f9f1728d92a11, type: 3}
-  animator: {fileID: 9100000, guid: c86b5b6aa9791fb459ca41ea69647a56, type: 2}
+  animator: {fileID: 9100000, guid: 43867a8e4af1fbf4895b303d7118b591, type: 2}

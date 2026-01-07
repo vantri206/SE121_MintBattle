@@ -99,6 +99,16 @@ public class HeroDetailUI : MonoBehaviour
             btnClose.onClick.AddListener(OnCloseClicked);
         }
     }
+    private void Update()
+    {
+        if (heroDetailPanel.activeSelf && isBattleMode)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OnCloseClicked();
+            }
+        }
+    }
     private void OnCloseClicked()
     {
         TurnOffHeroDetail();

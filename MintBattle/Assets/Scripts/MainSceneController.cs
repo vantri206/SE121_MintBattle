@@ -51,12 +51,11 @@ public class MainSceneController : MonoBehaviour
 
     private void OnTeamSelectedForBattle(int teamIndex)
     {
-
         if (TeamManager.Instance.IsTeamEmpty(teamIndex))
         {
-            Debug.LogWarning("No hero in team");
+            Debug.Log("No hero in team");
 
-            // UIManager.Instance.ShowMessage("At least one hero needed!");
+            MessageBox.Instance.ShowSuccess("No hero in team! Add Hero before in Invetory.");
 
             return; 
         }
